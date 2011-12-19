@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<class>
+  <Name name = "LBDAQ1" />
+  <Header hname = "LBDAQThread.h" />
+  <Info cname = "LBDAQThread" isdaq = "true" />
+  <RunTimeParams>
+    <Param name = "e1" type = "double" />
+    <Param name = "ind" type = "int" />
+  </RunTimeParams>
+  <ProcessDetails readerName = "LBA1" objectFromName = "LBDAQ1" />
+  <DataBlocks> 
+    <Data block = "frame" /> 
+  </DataBlocks> 
+</class>

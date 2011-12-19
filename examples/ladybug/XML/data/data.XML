@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<data>
+  <datat>
+    <dataname dname = "frame" />
+    <var>
+      <vtype type = "double" vname = "width" />
+      <vtype type = "double" vname = "height" />
+    </var>
+  </datat>
+</data>

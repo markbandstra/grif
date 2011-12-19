@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<app>
+  <Objects>
+    <object name= "LBDAQ1" class = "LBDAQ"></object>
+    <object name= "LBA1" class = "LBAnalysis"></object>
+  </Objects>
+
+  <Links>
+    <link writer = "LBDAQ1" reader = "LBA1" data = "frame"></link>
+  </Links>
+</app>
