@@ -1,0 +1,1 @@
+app_file = "/home/ben/Documents/grif/examples/simulator/XML/app/APP.XML";
