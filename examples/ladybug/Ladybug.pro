@@ -22,7 +22,8 @@ include(../../framework/include/finclude.pri)
 # Your application files
 HEADERS += \
     ./include/LBAnalysisThread.h \
-    ./include/LBDAQThread.h
+    ./include/LBDAQThread.h \
+    ./include/util.h
 SOURCES += \
     ./src/main.cpp \
     ./src/LBAnalysisThread.cpp \
