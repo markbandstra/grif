@@ -1,9 +1,7 @@
 #include "LBDAQThread.h"
 #include <iostream>
 
-const char *LB_FILE_BASE = "/fill/this/in"
-
-  GRIDAQBaseAccumNode* LBDAQThread::RegisterDataOutput(QString outName) {
+GRIDAQBaseAccumNode* LBDAQThread::RegisterDataOutput(QString outName) {
   GRIDAQBaseAccumNode* p = NULL;
   if (outName == "ADCOutput") {
     p = new GRIDAQAccumulator<double>(outName,1e8,5,250);
@@ -15,13 +13,17 @@ const char *LB_FILE_BASE = "/fill/this/in"
   return p;
 }
 
-  int LBDAQThread::connectToDAQ() {
-    LADYBUGDLL_API LadybugError error = ladybugCreateVideoContext(context_);
-    assert(error == LADYBUG_OK);
-  }
+int LBDAQThread::connectToDAQ() {
+  LADYBUGDLL_API LadybugError error = ladybugCreateVideoContext(context_);
+  assert(error == LADYBUG_OK);
+}
 
 int LBDAQThread::acquireData(int n) {
   InitCamera();
+   if ( !LoadIniFile( INI_FILENAME ) ) {
+      printf( "Error found in reading INI file:%s. "
+         "One or more defaut values are being used.\n", INI_FILENAME );
+   };
   StartRecording();
 }
 

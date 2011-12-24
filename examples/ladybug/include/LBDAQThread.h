@@ -27,6 +27,8 @@ class LBDAQThread : public GRIDAQThread {
   int stopDataAcquisition() { return 0; }
 
  private:
+  int InitCamer();
+
   LadybugVideoContext context_;
 };
 
