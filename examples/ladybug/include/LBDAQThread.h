@@ -1,7 +1,6 @@
 #ifndef LBDAQTHREAD_H
 #define LBDAQTHREAD_H
 
-#include <assert.h>
 #include <ladybug/include/ladybug.h>
 #include "GRIDAQAccumulator.h"
 #include "GRIDAQBaseAccumNode.h"
@@ -13,23 +12,27 @@ class LBDAQThread : public GRIDAQThread {
   LBDAQThread();
   ~LBAQThread();
   
-  // Open the video, get a number of frames, write to file, close the video
-  int acquireData(int n);
-
   GRIDAQBaseAccumNode *RegisterDataOutput(QString outName);
 
-  // Create a Ladybug video context
+  // Load initialization file and start camera
   int connectToDAQ();
 
+  // Configure ladybug output format
+  int loadConfiguration();
+
+  // Start the recording
+  int startDataAcquisition();
+
+  // Get frames and write to disk
+  int acquireData(int n);
+
+  // Stop the recording
+  int stopDataAcquisition();
+
   int initialize() { return 0; }
-  int loadConfiguration() { return 0; }
-  int startDataAcquisition() {return 0; }
-  int stopDataAcquisition() { return 0; }
 
  private:
-  int InitCamer();
-
-  LadybugVideoContext context_;
+  int StartCamera();
 };
 
 #endif // LBDAQTHREAD_H
