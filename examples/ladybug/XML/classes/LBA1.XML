@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <class>
-  <Name name = "LBA1" />
-  <Header hname = "LBAnalysisThread.h" />
-  <Info cname = "LBAnalysisThread" isdaq = "false" />
-  <ProcessDetails readerName = "LBA1" objectFromName = "LBDAQ1" />
+  <Name name = "LBIMA1" />
+  <Header hname = "LBImAnalysisThread.h" />
+  <Info cname = "LBImAnalysisThread" isdaq = "false" />
   <DataBlocks> 
     <Data block = "frame" /> 
   </DataBlocks> 
