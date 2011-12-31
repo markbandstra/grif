@@ -13,9 +13,6 @@
 #include "GRIMemoryManager.h"
 #include "GRIRegulator.h"
 
-// TODO(arbenson): better description
-// Simulator example
-
 int main(int argc, char* argv[]) {
   // the following will be included for all programs
   QCoreApplication app(argc, argv);
