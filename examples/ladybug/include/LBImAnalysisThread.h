@@ -3,10 +3,10 @@
 
 #include "GRIAnalysisThread.h"
 
-class SIMAnalysisThread : public GRIAnalysisThread {
+class LBImAnalysisThread : public GRIAnalysisThread {
  public:
-  SIMAnalysisThread() {}
-  ~SIMAnalysisThread() {}
+  LBImAnalysisThread() {}
+  ~LBImAnalysisThread() {}
 
   int Analyze();
 };

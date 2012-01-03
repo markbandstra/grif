@@ -1,16 +1,16 @@
 #ifndef LBDAQTHREAD_H
 #define LBDAQTHREAD_H
 
-#include <ladybug/include/ladybug.h>
+#include "H:\Program Files\Point Grey Research\PGR Ladybug\include\ladybug.h"
 #include "GRIDAQAccumulator.h"
 #include "GRIDAQBaseAccumNode.h"
 #include "GRIDataDefines.h"
 #include "GRIDAQThread.h"
 
-class LBDAQThread : public GRIDAQThread {
+class LBImDAQThread : public GRIDAQThread {
  public:
-  LBDAQThread();
-  ~LBAQThread();
+  LBImDAQThread() {}
+  ~LBImDAQThread() {}
   
   GRIDAQBaseAccumNode *RegisterDataOutput(QString outName);
 
@@ -25,6 +25,9 @@ class LBDAQThread : public GRIDAQThread {
 
   // Stop the recording
   int stopDataAcquisition();
+
+  // Clean up
+  int terminationRoutines();
 
   int loadConfiguration() { return 0; }
   int initialize() { return 0; }

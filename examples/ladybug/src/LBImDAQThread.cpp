@@ -37,7 +37,7 @@ GRIDAQBaseAccumNode* LBImDAQThread::RegisterDataOutput(QString outName) {
   return NULL;
 }
 
-void LBImDAQThread::terminationRoutines() {
+int LBImDAQThread::terminationRoutines() {
   // Destroy the context
   printf("Destroying context...\n");
   LadybugError error = ::ladybugDestroyContext(&context_);
@@ -47,9 +47,12 @@ void LBImDAQThread::terminationRoutines() {
   for(unsigned int uiCamera = 0; uiCamera < LADYBUG_NUM_CAMERAS; ++uiCamera) {
     delete arp_buffers_[uiCamera];
   }
+
+  return 0;
 }
 
 int LBImDAQThread::acquireData(int n) {
+    Q_UNUSED(n)
   LadybugError error;
   LadybugImage image;
   char pszOutputFilePath[256];
@@ -88,6 +91,7 @@ int LBImDAQThread::acquireData(int n) {
     _HANDLE_ERROR;
     printf("Output to file %s.\n", pszOutputFilePath);
   }
+  return 0;
 }
 
 int LBImDAQThread::connectToDAQ() {
@@ -111,7 +115,8 @@ int LBImDAQThread::connectToDAQ() {
   printf("Starting camera %s...\n", caminfo.pszModelName);
 
   error = ::ladybugStart(context_, LADYBUG_RESOLUTION_ANY,
-			 LADYBUG_DATAFORMAT_COLOR_SEP_SEQUENTIAL_JPEG,
-			 LADYBUG_FRAMERATE_ANY);
+             LADYBUG_DATAFORMAT_COLOR_SEP_SEQUENTIAL_JPEG);
   _HANDLE_ERROR;
+
+  return 0;
 }

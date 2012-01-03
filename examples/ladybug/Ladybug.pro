@@ -29,7 +29,10 @@ SOURCES += \
     ./src/LBImAnalysisThread.cpp \
     ./src/LBImDAQThread.cpp
 
-# root headers
+# Ladybug headers
+INCLUDEPATH += $$LBDIR/include
+
+# ROOT headers
 INCLUDEPATH += $$(ROOTDIR)/include
 
 ROOTSYSLIB += $$(ROOTDIR)/lib
@@ -40,6 +43,10 @@ LIBS += $$ROOTSYSLIB/libMathCore.so
 LIBS += -L/$$ROOTSYSLIB
 LIBS += -L$$ROOTSYS/lib -lCore -lHist
 
+# Head GRIF directory
+GRIF = $$(PWD)/../..
+
+# External files
 EXTDIR = $$(GRIF)/external
 INCLUDEPATH += $$EXTDIR
 
@@ -53,4 +60,8 @@ win32 {
   system(cd $$GRIFPROJECTDIR; python setup.py)
 }
 
-QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1 -O3
+QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1
+
+macx|unix {
+ QMAKE_CXXFLAGS +=  -O3
+}

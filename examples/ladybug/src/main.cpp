@@ -12,6 +12,9 @@
 #include "GRIUserLoader.h"
 #include "GRIMemoryManager.h"
 #include "GRIRegulator.h"
+#ifdef Q_OS_WIN
+  //#include <windows.h>
+#endif
 
 int main(int argc, char* argv[]) {
   // the following will be included for all programs
@@ -23,9 +26,17 @@ int main(int argc, char* argv[]) {
   GRILoader *loader = new GRIUserLoader(reg);
   loader->initRegulatorDetails();
   reg->Start();
+#ifdef Q_OS_WIN
+  //Sleep(5);
+#else
   sleep(5);
+#endif
   reg->Stop();
-  sleep(10);
+#ifdef Q_OS_WIN
+  //Sleep(5);
+#else
+  sleep(5);
+#endif
   std::cout << "done..." << std::endl;
   return app.exec();
 }
