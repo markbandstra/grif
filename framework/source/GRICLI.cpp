@@ -23,6 +23,7 @@
 #include "iostream"
 #include <QList>
 #include <QStringList>
+#include <QVector>
 #include "GRICLI.h"
 
 GRICLI::GRICLI(QList<GRIProcessThread *> *processes) {
@@ -58,7 +59,7 @@ void GRICLI::Launch() {
 
     QStringList instr_breakup = instr.split(" ", QString::SkipEmptyParts);
     int n = instr_breakup.length();
-    QString instr_array[n];
+    QVector<QString> instr_array(n);
     QList<QString>::iterator instr_it;
     int i = 0;
     for (instr_it = instr_breakup.begin(); instr_it != instr_breakup.end();
@@ -96,21 +97,21 @@ void GRICLI::Quit() {
 void GRICLI::ReceiveProcessGet(ProcessCommand *pc) {
   QMutexLocker locker(&get_lock_);
   if (!pc) return;
-  if (!(pc->command_type == GET)) return;
+  if (!(pc->command_type == GRI_GET)) return;
   switch (pc->data_type) {
-    case BOOL:
+    case GRI_BOOL:
       std::cout << "GET (" << pc->key.toStdString().c_str() << "): "
 		<< pc->data.bool_val << std::endl;
-    case CHAR:
+    case GRI_CHAR:
       std::cout << "GET (" << pc->key.toStdString().c_str() << "): "
 		<< pc->data.char_val << std::endl;
-    case INT:
+    case GRI_INT:
       std::cout << "GET (" << pc->key.toStdString().c_str() << "): "
 		<< pc->data.int_val << std::endl;
-    case FLOAT:
+    case GRI_FLOAT:
       std::cout << "GET (" << pc->key.toStdString().c_str() << "): "
 		<< pc->data.float_val << std::endl;
-    case DOUBLE:
+    case GRI_DOUBLE:
       std::cout << "GET (" << pc->key.toStdString().c_str() << "): "
 		<< pc->data.double_val << std::endl;
   }
@@ -177,7 +178,7 @@ void GRICLI::DisplayActions() {
   std::cout << "[Not implemented yet, still need to do -Austin]" << std::endl;
 }
 
-void GRICLI::HandleMain(QString *instr_array, int n) {
+void GRICLI::HandleMain(QVector<QString> instr_array, int n) {
   // check if processes call
   if (n < 1) {
       std::cout << "could not parse instructon" << std::endl;
@@ -199,7 +200,7 @@ void GRICLI::HandleMain(QString *instr_array, int n) {
   }
 }
 
-void GRICLI::HandleProcessTop(QString *instr_array, int n) {
+void GRICLI::HandleProcessTop(QVector<QString> instr_array, int n) {
   if (instr_array[0] == "set" && n >= 4) {
     ProcessSet(instr_array[1], instr_array[2], instr_array[3]);
   } else if (instr_array[0] == "get" && n >= 3) {
@@ -253,7 +254,7 @@ void GRICLI::HandleMacroDef(const QString& instr) {
   macro_hash_[macro_name] = macro;
 }
 
-void GRICLI::HandleMacroExecution(QString *instr_array, int n) {
+void GRICLI::HandleMacroExecution(QVector<QString> instr_array, int n) {
   if (n < 2) {
     std::cout << "Format is macro [macroname1] [macroname2] [macroname3]" << std::endl;
   }
@@ -278,18 +279,18 @@ ProcessCommand *GRICLI::CreateGetCommand(const QString& name,
   std::cout << "Creating a get command: " << name.toStdString().c_str()
             << " " << dataType.toStdString().c_str() << std::endl;
   ProcessCommand *pc = new ProcessCommand;
-  pc->command_type = GET;
+  pc->command_type = GRI_GET;
   pc->key = name;
   if (dataType == "double") {
-    pc->data_type = DOUBLE;
+    pc->data_type = GRI_DOUBLE;
   } else if (dataType == "int") {
-    pc->data_type = INT;
+    pc->data_type = GRI_INT;
   } else if (dataType == "float") {
-    pc->data_type = FLOAT;
+    pc->data_type = GRI_FLOAT;
   } else if (dataType == "char") {
-    pc->data_type = CHAR;
+    pc->data_type = GRI_CHAR;
   } else if (dataType == "bool" || dataType == "boolean") {
-    pc->data_type = BOOL;
+    pc->data_type = GRI_BOOL;
   } else {
     std::cout << "Can't parse data type: " << dataType.toStdString().c_str() << std::endl;
   }
@@ -303,27 +304,27 @@ ProcessCommand *GRICLI::CreateSetCommand(const QString& name,
             << " " << value.toStdString().c_str() << " "
             << dataType.toStdString().c_str() << std::endl;
   ProcessCommand *pc = new ProcessCommand;
-  pc->command_type = SET;
+  pc->command_type = GRI_SET;
   pc->key = name;
   
   if (dataType == "double") {
-    pc->data_type = DOUBLE;
+    pc->data_type = GRI_DOUBLE;
     double val = value.toDouble();
     pc->data.double_val = val;
   } else if (dataType == "int") {
-    pc->data_type = INT;
+    pc->data_type = GRI_INT;
     int val = value.toInt();
     pc->data.int_val = val;
   } else if (dataType == "float") {
-    pc->data_type = FLOAT;
+    pc->data_type = GRI_FLOAT;
     float val = value.toFloat();
     pc->data.float_val = val;
   } else if (dataType == "char") {
-    pc->data_type = CHAR;
+    pc->data_type = GRI_CHAR;
     char val = (char)value.toInt();
     pc->data.char_val = val;
   } else if (dataType == "bool" || dataType == "boolean") {
-    pc->data_type = BOOL;
+    pc->data_type = GRI_BOOL;
     bool val;
     if (value == "true" || value == "1" || value == "yes") {
       val = true;
@@ -341,7 +342,7 @@ ProcessCommand *GRICLI::CreateRunActionCommand(const QString& name) {
   std::cout << "Creating a run action command: " << name.toStdString().c_str()
             << std::endl;
   ProcessCommand *pc = new ProcessCommand;
-  pc->command_type = RUN_ACTION;
+  pc->command_type = GRI_RUN_ACTION;
   pc->key = name;
   return pc;
 }

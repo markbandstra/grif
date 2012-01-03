@@ -57,13 +57,13 @@ class GRICLI : public QObject{
   void DisplayProcesses();
   void DisplayActions();
 
-  void HandleMain(QString *instr_array, int n);
-  void HandleProcessTop(QString *instr_array, int n);
+  void HandleMain(QVector<QString> instr_array, int n);
+  void HandleProcessTop(QVector<QString> instr_array, int n);
 
   void Init();
 
   void HandleMacroDef(const QString& instr);
-  void HandleMacroExecution(QString *instr_array, int n);
+  void HandleMacroExecution(QVector<QString> instr_array, int n);
 
   // methods that parse input to do sets, gets, and actions
   void ProcessSet(const QString& name, const QString& value,
