@@ -113,17 +113,17 @@ enum ENDIAN { LITTLE_END, BIG_END };
 #define GRILOG_ERROR 4
 
 enum COMMAND_TYPE {
-  SET = 0,
-  GET,
-  RUN_ACTION
+  GRI_SET = 0,
+  GRI_GET,
+  GRI_RUN_ACTION
 };
 
 enum DATA_TYPE {
-  BOOL = 0,
-  CHAR,
-  INT,
-  FLOAT,
-  DOUBLE
+  GRI_BOOL = 0,
+  GRI_CHAR,
+  GRI_INT,
+  GRI_FLOAT,
+  GRI_DOUBLE
 };
 
 struct ProcessCommand {
