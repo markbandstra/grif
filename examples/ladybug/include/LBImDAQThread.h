@@ -15,18 +15,18 @@ class LBImDAQThread : public GRIDAQThread {
   GRIDAQBaseAccumNode *RegisterDataOutput(QString outName);
 
   // Load initialization file and start camera
-  int connectToDAQ();
+  int ConnectToDAQ();
 
   // Get frames and write to disk
-  int acquireData(int n);
+  int AcquireData(int n);
 
   // Clean up
-  int terminationRoutines();
+  int TerminationRoutines();
 
-  int startDataAcquisition() { return 0; }
-  int stopDataAcquisition() { return 0; }
-  int loadConfiguration() { return 0; }
-  int initialize() { return 0; }
+  int StartDataAcquisition() { return 0; }
+  int StopDataAcquisition() { return 0; }
+  int LoadConfiguration() { return 0; }
+  int Initialize() { return 0; }
 
  private:
   int StartCamera();

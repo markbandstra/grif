@@ -39,7 +39,7 @@ GRIDAQBaseAccumNode* LBImDAQThread::RegisterDataOutput(QString outName) {
   return NULL;
 }
 
-int LBImDAQThread::terminationRoutines() {
+int LBImDAQThread::TerminationRoutines() {
   // Destroy the context
   printf("Destroying context...\n");
   LadybugError error = ::ladybugDestroyContext(&context_);
@@ -53,7 +53,7 @@ int LBImDAQThread::terminationRoutines() {
   return 0;
 }
 
-int LBImDAQThread::acquireData(int n) {
+int LBImDAQThread::AcquireData(int n) {
   Q_UNUSED(n)
   LadybugError error;
   LadybugImage image;
@@ -98,7 +98,7 @@ int LBImDAQThread::acquireData(int n) {
   return 0;
 }
 
-int LBImDAQThread::connectToDAQ() {
+int LBImDAQThread::ConnectToDAQ() {
   LadybugError error;
   LadybugCameraInfo caminfo;
 
