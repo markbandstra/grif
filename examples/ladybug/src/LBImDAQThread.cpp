@@ -20,6 +20,8 @@
 
 #include "LBImDAQThread.h"
 
+#include <QDateTime>
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,7 +54,7 @@ int LBImDAQThread::terminationRoutines() {
 }
 
 int LBImDAQThread::acquireData(int n) {
-    Q_UNUSED(n)
+  Q_UNUSED(n)
   LadybugError error;
   LadybugImage image;
   char pszOutputFilePath[256];
@@ -85,7 +87,9 @@ int LBImDAQThread::acquireData(int n) {
     processedImage.pixelFormat = LADYBUG_BGRU;
     processedImage.uiCols = image.uiCols;
     processedImage.uiRows = image.uiRows;
-    sprintf(pszOutputFilePath, "ladybug_image_camera_%02d.bmp", uiCamera);
+    sprintf(pszOutputFilePath, "LADYBUG_%s_%02d.bmp",
+            QDateTime::currentDateTime().toString("yyMMdd_hhmmss").toStdString().c_str(),
+            uiCamera);
     error = ::ladybugSaveImage(context_, &processedImage, pszOutputFilePath,
 			       LADYBUG_FILEFORMAT_BMP); 
     _HANDLE_ERROR;

@@ -35,13 +35,21 @@ INCLUDEPATH += $$LBDIR/include
 # ROOT headers
 INCLUDEPATH += $$(ROOTDIR)/include
 
-ROOTSYSLIB += $$(ROOTDIR)/lib
+LADYBUGPATH = "H:/Program Files/Point Grey Research/PGR Ladybug"
+
+macx|unix {
+  ROOTSYSLIB += $$(ROOTDIR)/lib
+  LIBS += -L$$ROOTSYS/lib -lCore -lHist
+}
+
+win32 {
+  INCLUDEPATH += LADYBUG_PATH\include
+  ROOTSYSLIB += $$(ROOTDIR)\lib
+  LIBS += -L$$ROOTSYSLIB -llibCore -llibHist
+  LIBS += -L$$LADYBUGPATH\lib -lladybug
+}
+
 INCLUDEPATH += $$ROOTSYSLIB
-LIBS += $$ROOTSYSLIB/libCint.so
-LIBS += $$ROOTSYSLIB/libMatrix.so
-LIBS += $$ROOTSYSLIB/libMathCore.so
-LIBS += -L/$$ROOTSYSLIB
-LIBS += -L$$ROOTSYS/lib -lCore -lHist
 
 # Head GRIF directory
 GRIF = $$(PWD)/../..

@@ -55,7 +55,7 @@ SOURCES += \
 # ***You must set GRIFDIR as an environment variable***
 GRIFDIR=$$(PWD)/../..
 
-ROOTDIR=/Users/benson/Desktop/root_x86_64
+INCLUDEPATH += $$LBDIR/include
 
 # root headers
 INCLUDEPATH += $$ROOTDIR/include

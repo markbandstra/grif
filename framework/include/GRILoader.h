@@ -52,9 +52,10 @@ class GRILoader {
   virtual GRIProcessThread* load(QString process_name, QString object_name) = 0;
 
  private:
+#ifdef GRIF_USE_BOOST
   void DetectCycles();
   void UpdateGraph(const QString& reader, const QString& writer);
-
+#endif
   QString local_grif_path_;
   GRIRegulator* regulator_;
   QList<Edge> edges_;

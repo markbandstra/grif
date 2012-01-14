@@ -23,15 +23,16 @@
 #include "GRILoader.h"
 #include "GRIParser.h"
 #include <utility>
+#ifdef GRIF_USE_BOOST
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/visitors.hpp>
 
-
 typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS,
                               boost::property<boost::vertex_color_t,
                                               boost::default_color_type> > Graph;
+#endif
 
 GRILoader::GRILoader(GRIRegulator *regulator) {
   regulator_ = regulator;
@@ -108,15 +109,20 @@ void GRILoader::initRegulatorDetails() {
       GRIDataBlock *data = new GRIDataBlock(regulator_, regulator_->get_mem_mngr(),
 					    reader, db_name, db_name, writer);
       regulator_->AddDataBlock(data);
+  #ifdef GRIF_USE_BOOST
       UpdateGraph(reader, writer);
+  #endif
     }
     regulator_->AddProcess(proc);
   }
   std::cout << "Successfully parsed XML file: " << app_file.toStdString().c_str()
 	    << std::endl;
+#ifdef GRIF_USE_BOOST
   DetectCycles();
+#endif
 }
 
+#ifdef GRIF_USE_BOOST
 namespace boost {
   struct cycle_detector : public dfs_visitor<> {
     cycle_detector(bool& has_cycle)
@@ -165,3 +171,4 @@ void GRILoader::DetectCycles() {
     std::cout << "No dependency cycle detected." << std::endl;
   }
 }
+#endif

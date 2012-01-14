@@ -26,6 +26,7 @@ int main(int argc, char* argv[]) {
   GRILoader *loader = new GRIUserLoader(reg);
   loader->initRegulatorDetails();
   reg->Start();
+  for(;;) {}
 #ifdef Q_OS_WIN
   //Sleep(5);
 #else

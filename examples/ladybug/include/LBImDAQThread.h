@@ -17,18 +17,14 @@ class LBImDAQThread : public GRIDAQThread {
   // Load initialization file and start camera
   int connectToDAQ();
 
-  // Start the recording
-  int startDataAcquisition();
-
   // Get frames and write to disk
   int acquireData(int n);
-
-  // Stop the recording
-  int stopDataAcquisition();
 
   // Clean up
   int terminationRoutines();
 
+  int startDataAcquisition() { return 0; }
+  int stopDataAcquisition() { return 0; }
   int loadConfiguration() { return 0; }
   int initialize() { return 0; }
 
