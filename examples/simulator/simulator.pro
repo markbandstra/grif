@@ -21,7 +21,6 @@
 # dhchivers@lbl.gov
 
 QT       += core network xml
-QT       -= gui
 
 # Change this variable to whatever your project name is
 TARGET = simulator
@@ -62,10 +61,18 @@ ROOTDIR = /Users/markbandstra/Software/root
 
 # run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/simulator
-system(cd $$GRIFPROJECTDIR)
-system(python setup.py)
+UTILDIR = $$GRIFDIR/util
+system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
 
 QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1
+
+# set up log directory
+GRIF_LOG_DIR = $$GRIFDIR/log/
+win32 {
+    GRIF_LOG_DIR = $$GRIFDIR\\log
+}
+
+DEFINES += GRIF_LOG_DIR=\\\"$${GRIF_LOG_DIR}\\\"
 
 DEFINES += GRIFPROJECTDIR=$${GRIFPROJECTDIR}
 
@@ -78,9 +85,15 @@ INCLUDEPATH += $$ROOTDIR/include
 # ROOT libraries
 ROOTSYSLIB += $$ROOTDIR/lib
 INCLUDEPATH += $$ROOTSYSLIB
-LIBS += $$ROOTSYSLIB/libCint.so
-LIBS += $$ROOTSYSLIB/libMatrix.so
-LIBS += $$ROOTSYSLIB/libMathCore.so
-LIBS += -L$$ROOTSYSLIB
-LIBS += -L$$ROOTSYS/lib -lCore -lHist
+
+# All *nix systems
+unix|macx {
+    LIBS += -L$$ROOTSYSLIB
+    LIBS += -L$$ROOTSYS/lib -lCore -lHist -lMatrix -lMathCore
+}
+# All windows platforms
+win32 {
+    LIBS += -L$$ROOTSYSLIB
+    LIBS += -L$$ROOTSYS/lib -llibCore -llibHist -llibMatrix -llibMathCore -llibCint
+}
 
