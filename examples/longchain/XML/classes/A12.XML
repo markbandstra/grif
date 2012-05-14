@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<class>
+  <Name name = "A12" />
+  <Header hname = "AnalysisThread12.h" />
+  <Info cname = "AnalysisThread12" isdaq = "false" />
+  <DataBlocks> 
+    <Data block = "ADCOutput" /> 
+    <Data block = "CHAN" /> 
+    <Data block = "TS" />
+  </DataBlocks> 
+</class>

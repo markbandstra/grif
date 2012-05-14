@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<app>
+  <Objects>
+    <object name= "SIMDAQ1" class = "SIMDAQ"></object>
+    <object name= "A01" class = "AnalysisThread01"></object>
+    <object name= "A02" class = "AnalysisThread02"></object>
+    <object name= "A03" class = "AnalysisThread03"></object>
+    <object name= "A04" class = "AnalysisThread04"></object>
+    <object name= "A05" class = "AnalysisThread05"></object>
+    <object name= "A06" class = "AnalysisThread06"></object>
+    <object name= "A07" class = "AnalysisThread07"></object>
+    <object name= "A08" class = "AnalysisThread08"></object>
+    <object name= "A09" class = "AnalysisThread09"></object>
+    <object name= "A10" class = "AnalysisThread10"></object>
+    <object name= "A11" class = "AnalysisThread11"></object>
+    <object name= "A12" class = "AnalysisThread12"></object>
+    <object name= "A13" class = "AnalysisThread13"></object>
+    <object name= "A14" class = "AnalysisThread14"></object>
+    <object name= "A15" class = "AnalysisThread15"></object>
+  </Objects>
+
+  <Links>
+    <link writer = "SIMDAQ1" reader = "A01" data = "ADCOutput"></link>
+    <link writer = "SIMDAQ1" reader = "A01" data = "CHAN"></link>
+    <link writer = "SIMDAQ1" reader = "A01" data = "TS"></link>
+    <link writer = "A01" reader = "A02" data = "ADCOutput"></link>
+    <link writer = "A01" reader = "A02" data = "CHAN"></link>
+    <link writer = "A01" reader = "A02" data = "TS"></link>
+    <link writer = "A02" reader = "A03" data = "ADCOutput"></link>
+    <link writer = "A02" reader = "A03" data = "CHAN"></link>
+    <link writer = "A02" reader = "A03" data = "TS"></link>
+    <link writer = "A03" reader = "A04" data = "ADCOutput"></link>
+    <link writer = "A03" reader = "A04" data = "CHAN"></link>
+    <link writer = "A03" reader = "A04" data = "TS"></link>
+    <link writer = "A04" reader = "A05" data = "ADCOutput"></link>
+    <link writer = "A04" reader = "A05" data = "CHAN"></link>
+    <link writer = "A04" reader = "A05" data = "TS"></link>
+    <link writer = "A05" reader = "A06" data = "ADCOutput"></link>
+    <link writer = "A05" reader = "A06" data = "CHAN"></link>
+    <link writer = "A05" reader = "A06" data = "TS"></link>
+    <link writer = "A06" reader = "A07" data = "ADCOutput"></link>
+    <link writer = "A06" reader = "A07" data = "CHAN"></link>
+    <link writer = "A06" reader = "A07" data = "TS"></link>
+    <link writer = "A07" reader = "A08" data = "ADCOutput"></link>
+    <link writer = "A07" reader = "A08" data = "CHAN"></link>
+    <link writer = "A07" reader = "A08" data = "TS"></link>
+    <link writer = "A08" reader = "A09" data = "ADCOutput"></link>
+    <link writer = "A08" reader = "A09" data = "CHAN"></link>
+    <link writer = "A08" reader = "A09" data = "TS"></link>
+    <link writer = "A09" reader = "A10" data = "ADCOutput"></link>
+    <link writer = "A09" reader = "A10" data = "CHAN"></link>
+    <link writer = "A09" reader = "A10" data = "TS"></link>
+    <link writer = "A10" reader = "A11" data = "ADCOutput"></link>
+    <link writer = "A10" reader = "A11" data = "CHAN"></link>
+    <link writer = "A10" reader = "A11" data = "TS"></link>
+    <link writer = "A11" reader = "A12" data = "ADCOutput"></link>
+    <link writer = "A11" reader = "A12" data = "CHAN"></link>
+    <link writer = "A11" reader = "A12" data = "TS"></link>
+    <link writer = "A12" reader = "A13" data = "ADCOutput"></link>
+    <link writer = "A12" reader = "A13" data = "CHAN"></link>
+    <link writer = "A12" reader = "A13" data = "TS"></link>
+    <link writer = "A13" reader = "A14" data = "ADCOutput"></link>
+    <link writer = "A13" reader = "A14" data = "CHAN"></link>
+    <link writer = "A13" reader = "A14" data = "TS"></link>
+    <link writer = "A14" reader = "A15" data = "ADCOutput"></link>
+    <link writer = "A14" reader = "A15" data = "CHAN"></link>
+    <link writer = "A14" reader = "A15" data = "TS"></link>
+  </Links>
+</app>
