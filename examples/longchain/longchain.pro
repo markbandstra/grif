@@ -64,6 +64,41 @@ SOURCES += \
     ./src/AnalysisThread13.cpp \
     ./src/AnalysisThread14.cpp \
     ./src/AnalysisThread15.cpp \
+    ./src/AnalysisThread16.cpp \
+    ./src/AnalysisThread17.cpp \
+    ./src/AnalysisThread18.cpp \
+    ./src/AnalysisThread19.cpp \
+    ./src/AnalysisThread20.cpp \
+    ./src/AnalysisThread21.cpp \
+    ./src/AnalysisThread22.cpp \
+    ./src/AnalysisThread23.cpp \
+    ./src/AnalysisThread24.cpp \
+    ./src/AnalysisThread25.cpp \
+    ./src/AnalysisThread26.cpp \
+    ./src/AnalysisThread27.cpp \
+    ./src/AnalysisThread28.cpp \
+    ./src/AnalysisThread29.cpp \
+    ./src/AnalysisThread30.cpp \
+    ./src/AnalysisThread31.cpp \
+    ./src/AnalysisThread32.cpp \
+    ./src/AnalysisThread33.cpp \
+    ./src/AnalysisThread34.cpp \
+    ./src/AnalysisThread35.cpp \
+    ./src/AnalysisThread36.cpp \
+    ./src/AnalysisThread37.cpp \
+    ./src/AnalysisThread38.cpp \
+    ./src/AnalysisThread39.cpp \
+    ./src/AnalysisThread40.cpp \
+    ./src/AnalysisThread41.cpp \
+    ./src/AnalysisThread42.cpp \
+    ./src/AnalysisThread43.cpp \
+    ./src/AnalysisThread44.cpp \
+    ./src/AnalysisThread45.cpp \
+    ./src/AnalysisThread46.cpp \
+    ./src/AnalysisThread47.cpp \
+    ./src/AnalysisThread48.cpp \
+    ./src/AnalysisThread49.cpp \
+    ./src/AnalysisThread50.cpp \
     ./src/SIMDAQThread.cpp
 
 HEADERS += \
@@ -82,6 +117,41 @@ HEADERS += \
     ./include/AnalysisThread13.h \
     ./include/AnalysisThread14.h \
     ./include/AnalysisThread15.h \
+    ./include/AnalysisThread16.h \
+    ./include/AnalysisThread17.h \
+    ./include/AnalysisThread18.h \
+    ./include/AnalysisThread19.h \
+    ./include/AnalysisThread20.h \
+    ./include/AnalysisThread21.h \
+    ./include/AnalysisThread22.h \
+    ./include/AnalysisThread23.h \
+    ./include/AnalysisThread24.h \
+    ./include/AnalysisThread25.h \
+    ./include/AnalysisThread26.h \
+    ./include/AnalysisThread27.h \
+    ./include/AnalysisThread28.h \
+    ./include/AnalysisThread29.h \
+    ./include/AnalysisThread30.h \
+    ./include/AnalysisThread31.h \
+    ./include/AnalysisThread32.h \
+    ./include/AnalysisThread33.h \
+    ./include/AnalysisThread34.h \
+    ./include/AnalysisThread35.h \
+    ./include/AnalysisThread36.h \
+    ./include/AnalysisThread37.h \
+    ./include/AnalysisThread38.h \
+    ./include/AnalysisThread39.h \
+    ./include/AnalysisThread40.h \
+    ./include/AnalysisThread41.h \
+    ./include/AnalysisThread42.h \
+    ./include/AnalysisThread43.h \
+    ./include/AnalysisThread44.h \
+    ./include/AnalysisThread45.h \
+    ./include/AnalysisThread46.h \
+    ./include/AnalysisThread47.h \
+    ./include/AnalysisThread48.h \
+    ./include/AnalysisThread49.h \
+    ./include/AnalysisThread50.h \
     ./include/SIMDAQThread.h
 
 ## 

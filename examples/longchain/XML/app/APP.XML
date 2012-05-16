@@ -17,6 +17,41 @@
     <object name= "A13" class = "AnalysisThread13"></object>
     <object name= "A14" class = "AnalysisThread14"></object>
     <object name= "A15" class = "AnalysisThread15"></object>
+    <object name= "A16" class = "AnalysisThread16"></object>
+    <object name= "A17" class = "AnalysisThread17"></object>
+    <object name= "A18" class = "AnalysisThread18"></object>
+    <object name= "A19" class = "AnalysisThread19"></object>
+    <object name= "A20" class = "AnalysisThread20"></object>
+    <object name= "A21" class = "AnalysisThread21"></object>
+    <object name= "A22" class = "AnalysisThread22"></object>
+    <object name= "A23" class = "AnalysisThread23"></object>
+    <object name= "A24" class = "AnalysisThread24"></object>
+    <object name= "A25" class = "AnalysisThread25"></object>
+    <object name= "A26" class = "AnalysisThread26"></object>
+    <object name= "A27" class = "AnalysisThread27"></object>
+    <object name= "A28" class = "AnalysisThread28"></object>
+    <object name= "A29" class = "AnalysisThread29"></object>
+    <object name= "A30" class = "AnalysisThread30"></object>
+    <object name= "A31" class = "AnalysisThread31"></object>
+    <object name= "A32" class = "AnalysisThread32"></object>
+    <object name= "A33" class = "AnalysisThread33"></object>
+    <object name= "A34" class = "AnalysisThread34"></object>
+    <object name= "A35" class = "AnalysisThread35"></object>
+    <object name= "A36" class = "AnalysisThread36"></object>
+    <object name= "A37" class = "AnalysisThread37"></object>
+    <object name= "A38" class = "AnalysisThread38"></object>
+    <object name= "A39" class = "AnalysisThread39"></object>
+    <object name= "A40" class = "AnalysisThread40"></object>
+    <object name= "A41" class = "AnalysisThread41"></object>
+    <object name= "A42" class = "AnalysisThread42"></object>
+    <object name= "A43" class = "AnalysisThread43"></object>
+    <object name= "A44" class = "AnalysisThread44"></object>
+    <object name= "A45" class = "AnalysisThread45"></object>
+    <object name= "A46" class = "AnalysisThread46"></object>
+    <object name= "A47" class = "AnalysisThread47"></object>
+    <object name= "A48" class = "AnalysisThread48"></object>
+    <object name= "A49" class = "AnalysisThread49"></object>
+    <object name= "A50" class = "AnalysisThread50"></object>
   </Objects>
 
   <Links>
@@ -65,5 +100,110 @@
     <link writer = "A14" reader = "A15" data = "ADCOutput"></link>
     <link writer = "A14" reader = "A15" data = "CHAN"></link>
     <link writer = "A14" reader = "A15" data = "TS"></link>
+    <link writer = "A15" reader = "A16" data = "ADCOutput"></link>
+    <link writer = "A15" reader = "A16" data = "CHAN"></link>
+    <link writer = "A15" reader = "A16" data = "TS"></link>
+    <link writer = "A16" reader = "A17" data = "ADCOutput"></link>
+    <link writer = "A16" reader = "A17" data = "CHAN"></link>
+    <link writer = "A16" reader = "A17" data = "TS"></link>
+    <link writer = "A17" reader = "A18" data = "ADCOutput"></link>
+    <link writer = "A17" reader = "A18" data = "CHAN"></link>
+    <link writer = "A17" reader = "A18" data = "TS"></link>
+    <link writer = "A18" reader = "A19" data = "ADCOutput"></link>
+    <link writer = "A18" reader = "A19" data = "CHAN"></link>
+    <link writer = "A18" reader = "A19" data = "TS"></link>
+    <link writer = "A19" reader = "A20" data = "ADCOutput"></link>
+    <link writer = "A19" reader = "A20" data = "CHAN"></link>
+    <link writer = "A19" reader = "A20" data = "TS"></link>
+    <link writer = "A20" reader = "A21" data = "ADCOutput"></link>
+    <link writer = "A20" reader = "A21" data = "CHAN"></link>
+    <link writer = "A20" reader = "A21" data = "TS"></link>
+    <link writer = "A21" reader = "A22" data = "ADCOutput"></link>
+    <link writer = "A21" reader = "A22" data = "CHAN"></link>
+    <link writer = "A21" reader = "A22" data = "TS"></link>
+    <link writer = "A22" reader = "A23" data = "ADCOutput"></link>
+    <link writer = "A22" reader = "A23" data = "CHAN"></link>
+    <link writer = "A22" reader = "A23" data = "TS"></link>
+    <link writer = "A23" reader = "A24" data = "ADCOutput"></link>
+    <link writer = "A23" reader = "A24" data = "CHAN"></link>
+    <link writer = "A23" reader = "A24" data = "TS"></link>
+    <link writer = "A24" reader = "A25" data = "ADCOutput"></link>
+    <link writer = "A24" reader = "A25" data = "CHAN"></link>
+    <link writer = "A24" reader = "A25" data = "TS"></link>
+    <link writer = "A25" reader = "A26" data = "ADCOutput"></link>
+    <link writer = "A25" reader = "A26" data = "CHAN"></link>
+    <link writer = "A25" reader = "A26" data = "TS"></link>
+    <link writer = "A26" reader = "A27" data = "ADCOutput"></link>
+    <link writer = "A26" reader = "A27" data = "CHAN"></link>
+    <link writer = "A26" reader = "A27" data = "TS"></link>
+    <link writer = "A27" reader = "A28" data = "ADCOutput"></link>
+    <link writer = "A27" reader = "A28" data = "CHAN"></link>
+    <link writer = "A27" reader = "A28" data = "TS"></link>
+    <link writer = "A28" reader = "A29" data = "ADCOutput"></link>
+    <link writer = "A28" reader = "A29" data = "CHAN"></link>
+    <link writer = "A28" reader = "A29" data = "TS"></link>
+    <link writer = "A29" reader = "A30" data = "ADCOutput"></link>
+    <link writer = "A29" reader = "A30" data = "CHAN"></link>
+    <link writer = "A29" reader = "A30" data = "TS"></link>
+    <link writer = "A30" reader = "A31" data = "ADCOutput"></link>
+    <link writer = "A30" reader = "A31" data = "CHAN"></link>
+    <link writer = "A30" reader = "A31" data = "TS"></link>
+    <link writer = "A31" reader = "A32" data = "ADCOutput"></link>
+    <link writer = "A31" reader = "A32" data = "CHAN"></link>
+    <link writer = "A31" reader = "A32" data = "TS"></link>
+    <link writer = "A32" reader = "A33" data = "ADCOutput"></link>
+    <link writer = "A32" reader = "A33" data = "CHAN"></link>
+    <link writer = "A32" reader = "A33" data = "TS"></link>
+    <link writer = "A33" reader = "A34" data = "ADCOutput"></link>
+    <link writer = "A33" reader = "A34" data = "CHAN"></link>
+    <link writer = "A33" reader = "A34" data = "TS"></link>
+    <link writer = "A34" reader = "A35" data = "ADCOutput"></link>
+    <link writer = "A34" reader = "A35" data = "CHAN"></link>
+    <link writer = "A34" reader = "A35" data = "TS"></link>
+    <link writer = "A35" reader = "A36" data = "ADCOutput"></link>
+    <link writer = "A35" reader = "A36" data = "CHAN"></link>
+    <link writer = "A35" reader = "A36" data = "TS"></link>
+    <link writer = "A36" reader = "A37" data = "ADCOutput"></link>
+    <link writer = "A36" reader = "A37" data = "CHAN"></link>
+    <link writer = "A36" reader = "A37" data = "TS"></link>
+    <link writer = "A37" reader = "A38" data = "ADCOutput"></link>
+    <link writer = "A37" reader = "A38" data = "CHAN"></link>
+    <link writer = "A37" reader = "A38" data = "TS"></link>
+    <link writer = "A38" reader = "A39" data = "ADCOutput"></link>
+    <link writer = "A38" reader = "A39" data = "CHAN"></link>
+    <link writer = "A38" reader = "A39" data = "TS"></link>
+    <link writer = "A39" reader = "A40" data = "ADCOutput"></link>
+    <link writer = "A39" reader = "A40" data = "CHAN"></link>
+    <link writer = "A39" reader = "A40" data = "TS"></link>
+    <link writer = "A40" reader = "A41" data = "ADCOutput"></link>
+    <link writer = "A40" reader = "A41" data = "CHAN"></link>
+    <link writer = "A40" reader = "A41" data = "TS"></link>
+    <link writer = "A41" reader = "A42" data = "ADCOutput"></link>
+    <link writer = "A41" reader = "A42" data = "CHAN"></link>
+    <link writer = "A41" reader = "A42" data = "TS"></link>
+    <link writer = "A42" reader = "A43" data = "ADCOutput"></link>
+    <link writer = "A42" reader = "A43" data = "CHAN"></link>
+    <link writer = "A42" reader = "A43" data = "TS"></link>
+    <link writer = "A43" reader = "A44" data = "ADCOutput"></link>
+    <link writer = "A43" reader = "A44" data = "CHAN"></link>
+    <link writer = "A43" reader = "A44" data = "TS"></link>
+    <link writer = "A44" reader = "A45" data = "ADCOutput"></link>
+    <link writer = "A44" reader = "A45" data = "CHAN"></link>
+    <link writer = "A44" reader = "A45" data = "TS"></link>
+    <link writer = "A45" reader = "A46" data = "ADCOutput"></link>
+    <link writer = "A45" reader = "A46" data = "CHAN"></link>
+    <link writer = "A45" reader = "A46" data = "TS"></link>
+    <link writer = "A46" reader = "A47" data = "ADCOutput"></link>
+    <link writer = "A46" reader = "A47" data = "CHAN"></link>
+    <link writer = "A46" reader = "A47" data = "TS"></link>
+    <link writer = "A47" reader = "A48" data = "ADCOutput"></link>
+    <link writer = "A47" reader = "A48" data = "CHAN"></link>
+    <link writer = "A47" reader = "A48" data = "TS"></link>
+    <link writer = "A48" reader = "A49" data = "ADCOutput"></link>
+    <link writer = "A48" reader = "A49" data = "CHAN"></link>
+    <link writer = "A48" reader = "A49" data = "TS"></link>
+    <link writer = "A49" reader = "A50" data = "ADCOutput"></link>
+    <link writer = "A49" reader = "A50" data = "CHAN"></link>
+    <link writer = "A49" reader = "A50" data = "TS"></link>
   </Links>
 </app>
