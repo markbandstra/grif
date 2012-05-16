@@ -25,8 +25,8 @@
 
 // AnalysisThread33:
 //    A modification of SIMAnalysisThread that divides the SIMDAQ data
-//    by channel and keeps a histogram for each channel ("ADC Channel 0",
-//    "ADC Channel 1", etc.).
+//    by channel and keeps a histogram for each channel ("Channel 0",
+//    "Channel 1", etc.).
 //
 //    Be sure to modify GRIUserProcesses.h and GRIUserLoader.cpp
 //    before you try to use this analysis thread class!

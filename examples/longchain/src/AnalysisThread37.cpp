@@ -28,7 +28,7 @@ int AnalysisThread37::Initialize(int nchan) {
   // create an ADC histogram for each channel
   int nhist = 0;
   for (int i = 0; i < nchan; ++i) {
-    QString histname = "Analysis 37 - ADC Channel " + QString::number(i);
+    QString histname = "Analysis 37 - Channel " + QString::number(i);
     if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
       ++nhist;
       SetHistRateMode(histname,false);
@@ -59,7 +59,7 @@ int AnalysisThread37::Analyze() {
 
   // these should all be the same
   for (int i = 0; i < nADC1; ++i) {
-    QString histname = "Analysis 37 - ADC Channel "+QString::number(CH1[i]);
+    QString histname = "Analysis 37 - Channel "+QString::number(CH1[i]);
     if (GetHistogram(histname)) {
       UpdateHistogram(histname, &(ADC1[i]),1);
     } else {
