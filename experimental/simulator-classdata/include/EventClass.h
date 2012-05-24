@@ -6,9 +6,11 @@
 
 #define MAX_LENGTH 20
 
-//#include <QList>
+#include <Qt>
 #include <QVector>
-//#include <vector>
+#include <QString>
+#include <vector>
+#include <string>
 
 // ROOT libs:
 
@@ -44,6 +46,10 @@ class EventClass {
   int NTS() { return num_ts_; }
   qint64 TS(int i);
 
+  // Empty QList to test to see if we can have a mutable type as a member so long as nothing is added.
+  std::vector<std::string> test_vector_;
+//  QVector<QString> test_vector_;
+
  private:
 //  QList<double> energy_;
 //  QVector<double> energy_;
@@ -57,9 +63,6 @@ class EventClass {
 //  QList<qint64> ts_;
   qint64 ts_[MAX_LENGTH];
   int num_ts_;
-
-  // Empty QList to test to see if we can have a mutable type as a member so long as nothing is added.
-//  QList test_qlist_;
 
 };
 

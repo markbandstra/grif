@@ -86,6 +86,9 @@ int SIMAnalysisThread::Analyze() {
               << " has " << Event1[i].NEnergies() << " energies, "
               << "  energy=" << Event1[i].Energy(0)
               << "  (test=" << Event1[i].EnergyTest() << ")"
+//              << "  (test2=" << Event1[i].test_vector_[0] << ")"
+              << "  (test2=" << Event1[i].test_vector_.size() << ")"
+//              << "  (test2=" << Event1[i].test_vector_[0].toStdString().c_str() << ")"
               << std::endl;
   }
 
@@ -114,6 +117,9 @@ int SIMAnalysisThread::Analyze() {
               << " has " << Event2[i].NEnergies() << " energies, "
               << "  energy=" << Event2[i].Energy(0)
               << "  (test=" << Event2[i].EnergyTest() << ")"
+//              << "  (test2=" << Event2[i].test_vector_[0] << ")"
+              << "  (test2=" << Event2[i].test_vector_.size() << ")"
+//              << "  (test2=" << Event2[i].test_vector_[0].toStdString().c_str() << ")"
               << std::endl;
   }
 
