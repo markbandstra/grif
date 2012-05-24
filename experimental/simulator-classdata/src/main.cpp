@@ -28,12 +28,12 @@
 #include <QtCore>
 #include <QLinkedList>
 #include <Qt>
-#include "GRICLI.h"
-#include "GRIDefines.h"
-#include "GRILoader.h"
-#include "GRIUserLoader.h"
-#include "GRIMemoryManager.h"
-#include "GRIRegulator.h"
+#include "tools/GRICLI.h"
+#include "core/GRIDefines.h"
+#include "config/GRILoader.h"
+#include "config/GRIUserLoader.h"
+#include "core/GRIMemoryManager.h"
+#include "core/GRIRegulator.h"
 
 // TODO(arbenson): better description
 // Simulator example
@@ -48,9 +48,9 @@ int main(int argc, char* argv[]) {
   GRILoader *loader = new GRIUserLoader(reg);
   loader->InitRegulatorDetails();
   reg->Start();
-  GRISleep::msleep(60000);
+  GRISleep::msleep(20000);
   reg->Stop();
-  GRISleep::msleep(10000);
+  GRISleep::msleep(5000);
   std::cout << "done..." << std::endl;
   return app.exec();
 }

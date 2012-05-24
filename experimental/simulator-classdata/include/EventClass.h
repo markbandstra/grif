@@ -58,6 +58,9 @@ class EventClass {
   qint64 ts_[MAX_LENGTH];
   int num_ts_;
 
+  // Empty QList to test to see if we can have a mutable type as a member so long as nothing is added.
+//  QList test_qlist_;
+
 };
 
 #endif

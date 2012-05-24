@@ -21,7 +21,6 @@
 # dhchivers@lbl.gov
 
 QT       += core network xml
-QT       -= gui
 
 # Change this variable to whatever your project name is
 TARGET = simulator-classdata
@@ -64,7 +63,7 @@ GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
 ROOTDIR = /Users/markbandstra/Software/root
 
 # run code generation
-GRIFPROJECTDIR = $$GRIFDIR/examples/simulator-classdata
+GRIFPROJECTDIR = $$GRIFDIR/experimental/simulator-classdata
 system(cd $$GRIFPROJECTDIR)
 system(python setup.py)
 
@@ -81,9 +80,15 @@ INCLUDEPATH += $$ROOTDIR/include
 # ROOT libraries
 ROOTSYSLIB += $$ROOTDIR/lib
 INCLUDEPATH += $$ROOTSYSLIB
-LIBS += $$ROOTSYSLIB/libCint.so
-LIBS += $$ROOTSYSLIB/libMatrix.so
-LIBS += $$ROOTSYSLIB/libMathCore.so
-LIBS += -L$$ROOTSYSLIB
-LIBS += -L$$ROOTSYS/lib -lCore -lHist
+
+# All *nix systems
+unix|macx {
+    LIBS += -L$$ROOTSYSLIB
+    LIBS += -L$$ROOTSYS/lib -lCore -lHist -lMatrix -lMathCore -lCint
+}
+# All windows platforms
+win32 {
+    LIBS += -L$$ROOTSYSLIB
+    LIBS += -L$$ROOTSYS/lib -llibCore -llibHist -llibMatrix -llibMathCore -llibCint
+}
 
