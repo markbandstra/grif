@@ -64,10 +64,19 @@ ROOTDIR = /Users/markbandstra/Software/root
 
 # run code generation
 GRIFPROJECTDIR = $$GRIFDIR/experimental/simulator-classdata
-system(cd $$GRIFPROJECTDIR)
-system(python setup.py)
+UTILDIR = $$GRIFDIR/util
+system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
+QMAKE_CLEAN += $$GRIFDIR/framework/include/GCG/*
 
 QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1
+
+# set up log directory
+GRIF_LOG_DIR = $$GRIFDIR/log/
+win32 {
+    GRIF_LOG_DIR = $$GRIFDIR\\log
+}
+
+DEFINES += GRIF_LOG_DIR=\\\"$${GRIF_LOG_DIR}\\\"
 
 DEFINES += GRIFPROJECTDIR=$${GRIFPROJECTDIR}
 

@@ -181,7 +181,7 @@ int SIMDAQThread::AcquireData(int n) {
 int SIMDAQThread::StartDataAcquisition() {
   start_time_ = QDateTime::currentDateTime();
   prev_time_ = start_time_;
-  InitializeAccumulators(start_time_,0,1e8,4,250);
+  InitializeAccumulators(start_time_,0);
   return 0;
 }
 
