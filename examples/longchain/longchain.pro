@@ -49,6 +49,7 @@ include(../../framework/include/finclude.pri)
 # Source file and headers
 SOURCES += \
     ./src/main.cpp \
+    ./src/AnalysisThread00.cpp \
     ./src/AnalysisThread01.cpp \
     ./src/AnalysisThread02.cpp \
     ./src/AnalysisThread03.cpp \
@@ -99,9 +100,59 @@ SOURCES += \
     ./src/AnalysisThread48.cpp \
     ./src/AnalysisThread49.cpp \
     ./src/AnalysisThread50.cpp \
+    ./src/AnalysisThread51.cpp \
+    ./src/AnalysisThread52.cpp \
+    ./src/AnalysisThread53.cpp \
+    ./src/AnalysisThread54.cpp \
+    ./src/AnalysisThread55.cpp \
+    ./src/AnalysisThread56.cpp \
+    ./src/AnalysisThread57.cpp \
+    ./src/AnalysisThread58.cpp \
+    ./src/AnalysisThread59.cpp \
+    ./src/AnalysisThread60.cpp \
+    ./src/AnalysisThread61.cpp \
+    ./src/AnalysisThread62.cpp \
+    ./src/AnalysisThread63.cpp \
+    ./src/AnalysisThread64.cpp \
+    ./src/AnalysisThread65.cpp \
+    ./src/AnalysisThread66.cpp \
+    ./src/AnalysisThread67.cpp \
+    ./src/AnalysisThread68.cpp \
+    ./src/AnalysisThread69.cpp \
+    ./src/AnalysisThread70.cpp \
+    ./src/AnalysisThread71.cpp \
+    ./src/AnalysisThread72.cpp \
+    ./src/AnalysisThread73.cpp \
+    ./src/AnalysisThread74.cpp \
+    ./src/AnalysisThread75.cpp \
+    ./src/AnalysisThread76.cpp \
+    ./src/AnalysisThread77.cpp \
+    ./src/AnalysisThread78.cpp \
+    ./src/AnalysisThread79.cpp \
+    ./src/AnalysisThread80.cpp \
+    ./src/AnalysisThread81.cpp \
+    ./src/AnalysisThread82.cpp \
+    ./src/AnalysisThread83.cpp \
+    ./src/AnalysisThread84.cpp \
+    ./src/AnalysisThread85.cpp \
+    ./src/AnalysisThread86.cpp \
+    ./src/AnalysisThread87.cpp \
+    ./src/AnalysisThread88.cpp \
+    ./src/AnalysisThread89.cpp \
+    ./src/AnalysisThread90.cpp \
+    ./src/AnalysisThread91.cpp \
+    ./src/AnalysisThread92.cpp \
+    ./src/AnalysisThread93.cpp \
+    ./src/AnalysisThread94.cpp \
+    ./src/AnalysisThread95.cpp \
+    ./src/AnalysisThread96.cpp \
+    ./src/AnalysisThread97.cpp \
+    ./src/AnalysisThread98.cpp \
+    ./src/AnalysisThread99.cpp \
     ./src/SIMDAQThread.cpp
 
 HEADERS += \
+    ./include/AnalysisThread00.h \
     ./include/AnalysisThread01.h \
     ./include/AnalysisThread02.h \
     ./include/AnalysisThread03.h \
@@ -152,6 +203,55 @@ HEADERS += \
     ./include/AnalysisThread48.h \
     ./include/AnalysisThread49.h \
     ./include/AnalysisThread50.h \
+    ./include/AnalysisThread51.h \
+    ./include/AnalysisThread52.h \
+    ./include/AnalysisThread53.h \
+    ./include/AnalysisThread54.h \
+    ./include/AnalysisThread55.h \
+    ./include/AnalysisThread56.h \
+    ./include/AnalysisThread57.h \
+    ./include/AnalysisThread58.h \
+    ./include/AnalysisThread59.h \
+    ./include/AnalysisThread60.h \
+    ./include/AnalysisThread61.h \
+    ./include/AnalysisThread62.h \
+    ./include/AnalysisThread63.h \
+    ./include/AnalysisThread64.h \
+    ./include/AnalysisThread65.h \
+    ./include/AnalysisThread66.h \
+    ./include/AnalysisThread67.h \
+    ./include/AnalysisThread68.h \
+    ./include/AnalysisThread69.h \
+    ./include/AnalysisThread70.h \
+    ./include/AnalysisThread71.h \
+    ./include/AnalysisThread72.h \
+    ./include/AnalysisThread73.h \
+    ./include/AnalysisThread74.h \
+    ./include/AnalysisThread75.h \
+    ./include/AnalysisThread76.h \
+    ./include/AnalysisThread77.h \
+    ./include/AnalysisThread78.h \
+    ./include/AnalysisThread79.h \
+    ./include/AnalysisThread80.h \
+    ./include/AnalysisThread81.h \
+    ./include/AnalysisThread82.h \
+    ./include/AnalysisThread83.h \
+    ./include/AnalysisThread84.h \
+    ./include/AnalysisThread85.h \
+    ./include/AnalysisThread86.h \
+    ./include/AnalysisThread87.h \
+    ./include/AnalysisThread88.h \
+    ./include/AnalysisThread89.h \
+    ./include/AnalysisThread90.h \
+    ./include/AnalysisThread91.h \
+    ./include/AnalysisThread92.h \
+    ./include/AnalysisThread93.h \
+    ./include/AnalysisThread94.h \
+    ./include/AnalysisThread95.h \
+    ./include/AnalysisThread96.h \
+    ./include/AnalysisThread97.h \
+    ./include/AnalysisThread98.h \
+    ./include/AnalysisThread99.h \
     ./include/SIMDAQThread.h
 
 ## 

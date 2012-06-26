@@ -20,50 +20,50 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#include "AnalysisThread01.h"
+#include "AnalysisThread91.h"
 
 #include <QPair>
 
-int AnalysisThread01::Initialize(int nchan) {
+int AnalysisThread91::Initialize(int nchan) {
   // create an ADC histogram for each channel
   int nhist = 0;
   for (int i = 0; i < nchan; ++i) {
-    QString histname = "Analysis 01 - Channel " + QString::number(i);
+    QString histname = "Analysis 91 - Channel " + QString::number(i);
     if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
       ++nhist;
       SetHistRateMode(histname,false);
     }
   }
-  std::cout << "AnalysisThread01: Number of histograms created: "
+  std::cout << "AnalysisThread91: Number of histograms created: "
             << nhist << std::endl;
   return nhist;
 }
 
 
-int AnalysisThread01::Analyze() {
+int AnalysisThread91::Analyze() {
   // Read SIMDAQ
   double* ADC1;
   int* CH1;
   qint64* TS1;
   int nADC1, nCH1, nTS1;
 
-  QPair<int, double*> pADC1 = ReadData<double>("A00","ADCOutput");
+  QPair<int, double*> pADC1 = ReadData<double>("A90","ADCOutput");
   nADC1 = pADC1.first;
   ADC1 = pADC1.second;
-  QPair<int, int*> pCH1 = ReadData<int>("A00","CHAN");
+  QPair<int, int*> pCH1 = ReadData<int>("A90","CHAN");
   nCH1 = pCH1.first;
   CH1 = pCH1.second;
-  QPair<int, qint64*> pTS1 = ReadData<qint64>("A00","TS");
+  QPair<int, qint64*> pTS1 = ReadData<qint64>("A90","TS");
   nTS1 = pTS1.first;
   TS1 = pTS1.second;
 
   // these should all be the same
   for (int i = 0; i < nADC1; ++i) {
-    QString histname = "Analysis 01 - Channel "+QString::number(CH1[i]);
+    QString histname = "Analysis 91 - Channel "+QString::number(CH1[i]);
     if (GetHistogram(histname)) {
       UpdateHistogram(histname, &(ADC1[i]),1);
     } else {
-      std::cerr << "AnalysisThread01::Analyze: ADC1 channel out of range!  ch="
+      std::cerr << "AnalysisThread91::Analyze: ADC1 channel out of range!  ch="
     << CH1[i] << std::endl;
     }
   }
