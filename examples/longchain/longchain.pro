@@ -257,9 +257,9 @@ HEADERS += \
 ## 
 # Please fill in GRIFDIR and ROOTDIR with the appropriate paths
 # Top directory of GRIF on your machine:
-GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
+GRIFDIR =
 # Directory of ROOT on your machine:
-ROOTDIR = /Users/markbandstra/Software/root
+ROOTDIR =
 
 # run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/longchain
