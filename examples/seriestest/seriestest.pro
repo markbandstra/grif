@@ -59,9 +59,9 @@ HEADERS += \
 ## 
 # Please fill in GRIFDIR and ROOTDIR with the appropriate paths
 # Top directory of GRIF on your machine:
-GRIFDIR =
+GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
 # Directory of ROOT on your machine:
-ROOTDIR =
+ROOTDIR = /Users/markbandstra/Software/root
 
 # run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/seriestest

@@ -20,10 +20,10 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#ifndef GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREAD00_H_
-#define GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREAD00_H_
+#ifndef GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_
+#define GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_
 
-// AnalysisThread00:
+// AnalysisThreadChain:
 //    A modification of SIMAnalysisThread that divides the SIMDAQ data
 //    by channel and keeps a histogram for each channel ("Channel 0",
 //    "Channel 1", etc.).
@@ -36,14 +36,20 @@
 
 #include <core/GRIAnalysisThread.h>
 
-class AnalysisThread00 : public GRIAnalysisThread {
+class AnalysisThreadChain : public GRIAnalysisThread {
 
 public:
-  AnalysisThread00() {}
-  ~AnalysisThread00() {}
+  AnalysisThreadChain() {}
+  ~AnalysisThreadChain() {}
 
   int Analyze();
-  int Initialize(int nchan);
+  int Initialize(int n_channels, int thread_number);
+  QString Number();
+  QString XmlName();
+  QString XmlNamePrevious();
+
+  int n_channels_;
+  int thread_number_;
 };
 
-#endif  // GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREAD00_H_
+#endif  // GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_

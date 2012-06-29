@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <class>
   <Name name = "A37" />
-  <Header hname = "AnalysisThread37.h" />
-  <Info cname = "AnalysisThread37" isdaq = "false" />
+  <Header hname = "AnalysisThreadChain.h" />
+  <Info cname = "AnalysisThreadChain" isdaq = "false" />
   <DataBlocks> 
     <Data block = "ADCOutput" /> 
     <Data block = "CHAN" /> 
