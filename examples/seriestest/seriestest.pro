@@ -23,7 +23,7 @@
 QT       += core network xml
 QT       += gui
 
-TARGET = longchain
+TARGET = seriestest
 CONFIG   += console
 TEMPLATE = app
 
@@ -262,7 +262,7 @@ GRIFDIR =
 ROOTDIR =
 
 # run code generation
-GRIFPROJECTDIR = $$GRIFDIR/examples/longchain
+GRIFPROJECTDIR = $$GRIFDIR/examples/seriestest
 UTILDIR = $$GRIFDIR/util
 system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
 QMAKE_CLEAN += $$GRIFDIR/framework/include/GCG/*
