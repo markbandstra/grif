@@ -1,0 +1,46 @@
+// Copyright (C) 2012 Gamma-ray Imaging Framework Team
+// 
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 3.0 of the License, or (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+// 
+// The license can be found in the LICENSE.txt file.
+//
+// Contact:
+// Dr. Daniel Chivers
+// dhchivers@lbl.gov
+
+#ifndef GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADMIDDLE00_H_
+#define GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADMIDDLE00_H_
+
+// AnalysisThreadMiddle00:
+//    Passes along data that it reads and keeps a histogram.
+//
+//    Be sure to modify GRIUserProcesses.h and GRIUserLoader.cpp
+//    before you try to use this analysis thread class!
+
+#include <QList>
+#include <QString>
+
+#include <core/GRIAnalysisThread.h>
+
+class AnalysisThreadMiddle00 : public GRIAnalysisThread {
+
+public:
+  AnalysisThreadMiddle00() {}
+  ~AnalysisThreadMiddle00() {}
+
+  int Analyze();
+};
+
+#endif  // GRIF_EXAMPLES_PARALLEL_ANALYSISTHREADMIDDLE00_H_
