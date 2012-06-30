@@ -32,7 +32,7 @@ int AnalysisThreadChain::Initialize(int n_channels, int thread_number) {
   // create an ADC histogram for each channel
   int nhist = 0;
   for (int i = 0; i < n_channels_; ++i) {
-    QString histname = "Analysis " + Number() + " - Channel " + QString::number(i);
+    QString histname = "Analysis " + ThreadNumber() + " - Channel " + QString::number(i);
     if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
       ++nhist;
       SetHistRateMode(histname,false);
@@ -44,7 +44,7 @@ int AnalysisThreadChain::Initialize(int n_channels, int thread_number) {
 }
 
 
-QString AnalysisThreadChain::Number() {
+QString AnalysisThreadChain::ThreadNumber() {
   if (thread_number_<10) {
     return QString("0")+QString::number(thread_number_);
   } else {
@@ -54,7 +54,7 @@ QString AnalysisThreadChain::Number() {
 
 
 QString AnalysisThreadChain::XmlName() {
-  return QString("A")+Number();
+  return QString("A")+ThreadNumber();
 }
 
 
@@ -97,7 +97,7 @@ int AnalysisThreadChain::Analyze() {
       }
     }
     // Add array of ADCs from this channel to the channel's histogram
-    QString histname = "Analysis " + Number() + " - Channel "+QString::number(channel);
+    QString histname = "Analysis " + ThreadNumber() + " - Channel "+QString::number(channel);
     if (GetHistogram(histname) and ADCs_from_channel.size()>0) {
       UpdateHistogram(histname, &(ADCs_from_channel[0]),ADCs_from_channel.size());
     }

@@ -65,6 +65,13 @@ ROOTDIR = /Users/markbandstra/Software/root
 
 # run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/seriestest
+
+# run XML generation
+# make sure NUM_ANALYSIS_THREADS matches the constant of the same name in main.cpp!
+NUM_ANALYSIS_THREADS = 100
+system(cd $$GRIFPROJECTDIR && python make_app_xml.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
+system(cd $$GRIFPROJECTDIR && python make_class_xmls.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
+
 UTILDIR = $$GRIFDIR/util
 system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
 QMAKE_CLEAN += $$GRIFDIR/framework/include/GCG/*

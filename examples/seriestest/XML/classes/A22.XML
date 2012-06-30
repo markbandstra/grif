@@ -3,9 +3,9 @@
   <Name name = "A22" />
   <Header hname = "AnalysisThreadChain.h" />
   <Info cname = "AnalysisThreadChain" isdaq = "false" />
-  <DataBlocks> 
-    <Data block = "ADCOutput" /> 
-    <Data block = "CHAN" /> 
+  <DataBlocks>
+    <Data block = "ADCOutput" />
+    <Data block = "CHAN" />
     <Data block = "TS" />
-  </DataBlocks> 
+  </DataBlocks>
 </class>

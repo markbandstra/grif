@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
   win7->setCentralWidget(histDraw_Scroll);
   win7->setWindowTitle("Scrolling Grid");
   for (int j=0; j < NUM_ANALYSIS_THREADS; j++) {
-    histDraw_Scroll->AddHist(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"));
+    histDraw_Scroll->AddHist(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"));
   }
   histDraw_Scroll->SetGridMajor(25,4);
   histDraw_Scroll->SetGridMinor(3,4);
@@ -110,23 +110,23 @@ int main(int argc, char* argv[]) {
   for (int j=0; j < NUM_ANALYSIS_THREADS; j++) {
     if ((0*steps_per_color<=j) && (j<1*steps_per_color)) {
       int index = j - 0*steps_per_color;
-      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"),
+      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"),
                                           QColor(255, color_step*index, 0));
     } else if ((1*steps_per_color<=j) && (j<2*steps_per_color)) {
       int index = j - 1*steps_per_color;
-      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"),
+      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"),
                                           QColor(255-color_step*index, 255, 0));
     } else if ((2*steps_per_color<=j) && (j<3*steps_per_color)) {
       int index = j - 2*steps_per_color;
-      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"),
+      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"),
                                           QColor(0, 255, color_step*index));
     } else if ((3*steps_per_color<=j) && (j<4*steps_per_color)) {
       int index = j - 3*steps_per_color;
-      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"),
+      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"),
                                           QColor(0, 255-color_step*index, 255));
     } else if ((4*steps_per_color<=j) && (j<5*steps_per_color)) {
       int index = j - 4*steps_per_color;
-      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->Number()+" - Channel 0"),
+      histDraw_Scroll->SetForegroundColor(A[j]->GetHistogram("Analysis "+A[j]->ThreadNumber()+" - Channel 0"),
                                           QColor(color_step*index, 0, 255));
     }
   }

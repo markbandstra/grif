@@ -44,7 +44,7 @@ public:
 
   int Analyze();
   int Initialize(int n_channels, int thread_number);
-  QString Number();
+  QString ThreadNumber();
   QString XmlName();
   QString XmlNamePrevious();
 
