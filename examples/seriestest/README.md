@@ -14,4 +14,4 @@ The number of threads is specified in the calls to the `make_xml*.py` scripts in
 
 This graph of the threads and data connections was produced using the script `$GRIFDIR/util/draw_app_graph.py`.
 
-<center><img src="app.svg" alt="Series Test GRIF Application" title="Series Test GRIF Application" /></center>
+<center><img src="app.png" alt="Series Test GRIF Application" title="Series Test GRIF Application" /></center>
