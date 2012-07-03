@@ -59,23 +59,23 @@ HEADERS += \
 ## 
 # Please fill in GRIFDIR and ROOTDIR with the appropriate paths
 # Top directory of GRIF on your machine:
-GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
+GRIFDIR =
 # Directory of ROOT on your machine:
-ROOTDIR = /Users/markbandstra/Software/root
+ROOTDIR =
 
-# run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/seriestest
+UTILDIR = $$GRIFDIR/util
 
 # run XML generation
 # make sure NUM_ANALYSIS_THREADS matches the constant of the same name in main.cpp!
-NUM_ANALYSIS_THREADS = 100
+NUM_ANALYSIS_THREADS = 30
+system(cd $$UTILDIR && python draw_app_graph.py $$GRIFPROJECTDIR svg)
 system(cd $$GRIFPROJECTDIR && python make_app_xml.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
 system(cd $$GRIFPROJECTDIR && python make_class_xmls.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
 
-UTILDIR = $$GRIFDIR/util
+# run GRIF code generation
 system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
 QMAKE_CLEAN += $$GRIFDIR/framework/include/GCG/*
-
 QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1 -O3
 
 DEFINES += GRIFPROJECTDIR=$${GRIFPROJECTDIR}

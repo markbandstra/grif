@@ -44,7 +44,7 @@
 #include "AnalysisThreadSeries.h"
 
 #define NUM_CHANNELS 1
-#define NUM_ANALYSIS_THREADS 100
+#define NUM_ANALYSIS_THREADS 30
 
 int main(int argc, char* argv[]) {
   // the following will be included for all programs
