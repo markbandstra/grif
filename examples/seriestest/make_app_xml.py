@@ -31,9 +31,9 @@ def thread_str(thread_num):
 print('<?xml version="1.0"?>', file=xmlfile)
 print('<app>', file=xmlfile)
 print('  <Objects>', file=xmlfile)
-print('    <object name = \"SIMDAQ1\" class = \"SIMDAQ\"></object>', file=xmlfile)
+print('    <object name = \"SIMDAQ1\" class = \"SIMDAQThread\"></object>', file=xmlfile)
 for thread_num in range(num_threads):
-    print('    <object name = \"A'+thread_str(thread_num)+'\" class = \"AnalysisThreadChain\"></object>', file=xmlfile)    
+    print('    <object name = \"A'+thread_str(thread_num)+'\" class = \"AnalysisThreadSeries\"></object>', file=xmlfile)    
 print('  </Objects>', file=xmlfile)
 print('', file=xmlfile)
 print('  <Links>', file=xmlfile)

@@ -41,7 +41,7 @@
 #include <hist/GRIHist1DGridScrollWidget.h>
 
 #include "SIMDAQThread.h"
-#include "AnalysisThreadChain.h"
+#include "AnalysisThreadSeries.h"
 
 #define NUM_CHANNELS 1
 #define NUM_ANALYSIS_THREADS 100
@@ -58,11 +58,12 @@ int main(int argc, char* argv[]) {
 
   // get the processes
   QLinkedList<GRIProcessThread*> *p = reg->get_processes();
+  Q_ASSERT(p->size()==NUM_ANALYSIS_THREADS+1);
   // be careful not to remove anything
   SIMDAQThread *simdaq1  = (SIMDAQThread *)p->takeFirst();
-  AnalysisThreadChain * A[NUM_ANALYSIS_THREADS];
+  AnalysisThreadSeries * A[NUM_ANALYSIS_THREADS];
   for (int j=0; j < NUM_ANALYSIS_THREADS; j++) {
-    A[j] = (AnalysisThreadChain *)p->takeFirst();
+    A[j] = (AnalysisThreadSeries *)p->takeFirst();
   }
   p->push_back(simdaq1);
   for (int j=0; j < NUM_ANALYSIS_THREADS; j++) {

@@ -44,8 +44,8 @@ for thread_num in range(num_threads):
     print('<?xml version="1.0"?>', file=xmlfile)
     print('<class>', file=xmlfile)
     print('  <Name name = \"A'+thread_str(thread_num)+'\" />', file=xmlfile)
-    print('  <Header hname = \"AnalysisThreadChain.h\" />', file=xmlfile)
-    print('  <Info cname = \"AnalysisThreadChain\" isdaq = \"false\" />', file=xmlfile)
+    print('  <Header hname = \"AnalysisThreadSeries.h\" />', file=xmlfile)
+    print('  <Info cname = \"AnalysisThreadSeries\" isdaq = \"false\" />', file=xmlfile)
     print('  <DataBlocks>', file=xmlfile)
     for data in ['ADCOutput', 'CHAN', 'TS']:
         print('    <Data block = \"'+data+'\" />', file=xmlfile)

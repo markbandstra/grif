@@ -49,11 +49,11 @@ include(../../framework/include/finclude.pri)
 # Source file and headers
 SOURCES += \
     ./src/main.cpp \
-    ./src/AnalysisThreadChain.cpp \
+    ./src/AnalysisThreadSeries.cpp \
     ./src/SIMDAQThread.cpp
 
 HEADERS += \
-    ./include/AnalysisThreadChain.h \
+    ./include/AnalysisThreadSeries.h \
     ./include/SIMDAQThread.h
 
 ## 

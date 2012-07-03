@@ -20,12 +20,12 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#include "AnalysisThreadChain.h"
+#include "AnalysisThreadSeries.h"
 
 #include <QPair>
 #include <QList>
 
-int AnalysisThreadChain::Initialize(int n_channels, int thread_number) {
+int AnalysisThreadSeries::Initialize(int n_channels, int thread_number) {
   n_channels_ = n_channels;
   thread_number_ = thread_number;
 
@@ -38,13 +38,13 @@ int AnalysisThreadChain::Initialize(int n_channels, int thread_number) {
       SetHistRateMode(histname,false);
     }
   }
-  std::cout << "AnalysisThreadChain: Number of histograms created: "
+  std::cout << "AnalysisThreadSeries: Number of histograms created: "
             << nhist << std::endl;
   return nhist;
 }
 
 
-QString AnalysisThreadChain::ThreadNumber() {
+QString AnalysisThreadSeries::ThreadNumber() {
   if (thread_number_<10) {
     return QString("0")+QString::number(thread_number_);
   } else {
@@ -53,12 +53,12 @@ QString AnalysisThreadChain::ThreadNumber() {
 }
 
 
-QString AnalysisThreadChain::XmlName() {
+QString AnalysisThreadSeries::XmlName() {
   return QString("A")+ThreadNumber();
 }
 
 
-QString AnalysisThreadChain::XmlNamePrevious() {
+QString AnalysisThreadSeries::XmlNamePrevious() {
   int thread_previous = thread_number_ - 1;
   if (thread_previous==-1) {
     return QString("SIMDAQ1");
@@ -70,7 +70,7 @@ QString AnalysisThreadChain::XmlNamePrevious() {
 }
 
 
-int AnalysisThreadChain::Analyze() {
+int AnalysisThreadSeries::Analyze() {
   // Read SIMDAQ
   double* ADC1;
   int* CH1;

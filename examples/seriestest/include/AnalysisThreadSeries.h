@@ -20,27 +20,25 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#ifndef GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_
-#define GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_
+#ifndef GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADSERIES_H_
+#define GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADSERIES_H_
 
-// AnalysisThreadChain:
+// AnalysisThreadSeries:
 //    A modification of SIMAnalysisThread that divides the SIMDAQ data
 //    by channel and keeps a histogram for each channel ("Channel 0",
 //    "Channel 1", etc.).
 //
-//    Be sure to modify GRIUserProcesses.h and GRIUserLoader.cpp
-//    before you try to use this analysis thread class!
 
 #include <QList>
 #include <QString>
 
 #include <core/GRIAnalysisThread.h>
 
-class AnalysisThreadChain : public GRIAnalysisThread {
+class AnalysisThreadSeries : public GRIAnalysisThread {
 
 public:
-  AnalysisThreadChain() {}
-  ~AnalysisThreadChain() {}
+  AnalysisThreadSeries() {}
+  ~AnalysisThreadSeries() {}
 
   int Analyze();
   int Initialize(int n_channels, int thread_number);
@@ -52,4 +50,4 @@ public:
   int thread_number_;
 };
 
-#endif  // GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADCHAIN_H_
+#endif  // GRIF_EXAMPLES_HISTOGRAMMING_ANALYSISTHREADSERIES_H_
