@@ -69,7 +69,7 @@ UTILDIR = $$GRIFDIR/util
 # run XML generation
 # make sure NUM_ANALYSIS_THREADS matches the constant of the same name in main.cpp!
 NUM_ANALYSIS_THREADS = 30
-system(cd $$UTILDIR && python draw_app_graph.py $$GRIFPROJECTDIR png)
+system(cd $$UTILDIR && python draw_app_graph.py $$GRIFPROJECTDIR svg)
 system(cd $$GRIFPROJECTDIR && python make_app_xml.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
 system(cd $$GRIFPROJECTDIR && python make_class_xmls.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
 
