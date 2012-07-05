@@ -42,7 +42,8 @@ public:
   ~AnalysisThreadInitial() {}
 
   int Analyze();
-  int Initialize(int nchan);
+  int Initialize(int n_channels);
+  QString ThreadNumber(int index);
 
   int n_channels_;
 };

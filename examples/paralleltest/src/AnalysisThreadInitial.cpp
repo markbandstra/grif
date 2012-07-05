@@ -25,17 +25,25 @@
 #include <QPair>
 #include <QList>
 
+
+QString AnalysisThreadInitial::ThreadNumber(int index) {
+  if (index<10) {
+    return QString("0")+QString::number(index);
+  } else {
+    return QString::number(index);
+  }
+}
+
+
 int AnalysisThreadInitial::Initialize(int nchan) {
   n_channels_ = nchan;
 
-  // create an ADC histogram for each channel
+  // create an ADC histogram for all channels
   int nhist = 0;
-  for (int i = 0; i < n_channels_; ++i) {
-    QString histname = "Analysis Initial - Channel " + QString::number(i);
-    if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
-      ++nhist;
-      SetHistRateMode(histname,false);
-    }
+  QString histname = "Analysis Initial";
+  if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
+    ++nhist;
+    SetHistRateMode(histname,false);
   }
   std::cout << "AnalysisThreadInitial: Number of histograms created: "
             << nhist << std::endl;
@@ -50,24 +58,24 @@ int AnalysisThreadInitial::Analyze() {
   qint64* TS1;
   int nADC1, nCH1, nTS1;
 
-  QPair<int, double*> pADC1 = ReadData<double>("SIMDAQ1","ADCOutput");
+  QPair<int, double*> pADC1 = ReadData<double>("SIMDAQ","ADCOutput");
   nADC1 = pADC1.first;
   ADC1 = pADC1.second;
-  QPair<int, int*> pCH1 = ReadData<int>("SIMDAQ1","CHAN");
+  QPair<int, int*> pCH1 = ReadData<int>("SIMDAQ","CHAN");
   nCH1 = pCH1.first;
   CH1 = pCH1.second;
-  QPair<int, qint64*> pTS1 = ReadData<qint64>("SIMDAQ1","TS");
+  QPair<int, qint64*> pTS1 = ReadData<qint64>("SIMDAQ","TS");
   nTS1 = pTS1.first;
   TS1 = pTS1.second;
 
+  // Update histogram
+  QString histname = "Analysis Initial";
+  if (GetHistogram(histname)) {
+    UpdateHistogram(histname, ADC1, nADC1);
+  }
+
+  // Post data to intermediate threads
   for (int i = 0; i < n_channels_; ++i) {
-    QString histname = "Analysis Initial - Channel "+QString::number(CH1[i]);
-    if (GetHistogram(histname)) {
-      UpdateHistogram(histname, &(ADC1[i]),1);
-    } else {
-      std::cerr << "AnalysisThreadInitial::Analyze: ADC1 channel out of range!  ch="
-                << CH1[i] << std::endl;
-    }
     QList<double> ADC_channel;
     QList<int> CHAN_channel;
     QList<qint64> TS_channel;
@@ -79,11 +87,9 @@ int AnalysisThreadInitial::Analyze() {
       }
     }
     if (ADC_channel.size()>0) {
-      QString channel_name = QString::number(i);
-      cout << "Channel name: " << channel_name.toStdString().c_str() << std::endl;
-      PostData<double>(nADC1, "ADCOutput"+channel_name, ADC1);
-      PostData<int>(nCH1, "CHAN"+channel_name, CH1);
-      PostData<qint64>(nTS1, "TS"+channel_name, TS1);
+      PostData<double>(ADC_channel.size(), "ADCOutput"+ThreadNumber(i), &(ADC_channel[0]));
+      PostData<int>(CHAN_channel.size(), "CHAN"+ThreadNumber(i), &(CHAN_channel[0]));
+      PostData<qint64>(TS_channel.size(), "TS"+ThreadNumber(i), &(TS_channel[0]));
     }
   }
 

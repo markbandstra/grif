@@ -44,13 +44,13 @@ include(../../framework/include/finclude.pri)
 # Your application files
 HEADERS += \
     ./include/AnalysisThreadInitial.h \
-    ./include/AnalysisThreadMiddle00.h \
+    ./include/AnalysisThreadParallel.h \
     ./include/AnalysisThreadFinal.h \
     ./include/SIMDAQThread.h
 SOURCES += \
     ./src/main.cpp \
     ./src/AnalysisThreadInitial.cpp \
-    ./src/AnalysisThreadMiddle00.cpp \
+    ./src/AnalysisThreadParallel.cpp \
     ./src/AnalysisThreadFinal.cpp \
     ./src/SIMDAQThread.cpp
 
@@ -63,13 +63,20 @@ GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
 # Directory of ROOT on your machine:
 ROOTDIR = /Users/markbandstra/Software/root
 
-# run code generation
 GRIFPROJECTDIR = $$GRIFDIR/examples/paralleltest
 UTILDIR = $$GRIFDIR/util
+
+# run XML generation
+# make sure NUM_ANALYSIS_THREADS matches the constant of the same name in main.cpp!
+NUM_ANALYSIS_THREADS = 30
+system(cd $$GRIFPROJECTDIR && python make_app_xml.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
+system(cd $$GRIFPROJECTDIR && python make_class_xmls.py $$GRIFPROJECTDIR $$NUM_ANALYSIS_THREADS)
+system(cd $$UTILDIR && python draw_app_graph.py $$GRIFPROJECTDIR LR png svg)
+
+# run GRIF code generation
 system(cd $$UTILDIR && python setup.py $$GRIFPROJECTDIR)
 QMAKE_CLEAN += $$GRIFDIR/framework/include/GCG/*
-
-QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1
+QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1 -O3
 
 # set up log directory
 GRIF_LOG_DIR = $$GRIFDIR/log/

@@ -20,49 +20,62 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#include "AnalysisThreadMiddle00.h"
+#include "AnalysisThreadParallel.h"
 
 #include <QPair>
 
-int AnalysisThreadMiddle00::Initialize() {
-  // create an ADC histogram
-  QString histname = "Analysis Middle00";
+
+int AnalysisThreadParallel::Initialize(int thread_number) {
+  thread_number_ = thread_number;
+  // create an ADC histogram for this channel
+  int nhist = 0;
+  QString histname = "Analysis Parallel " + ThreadNumber();
   if (CreateNewHistogram(histname,300,0.0,1000.0) == 0) {
+    ++nhist;
     SetHistRateMode(histname,false);
-    std::cout << "AnalysisThreadMiddle00: Histogram created: " << histname << std::endl;
   }
-  return 1;
+  std::cout << "AnalysisThreadParallel: Number of histograms created: "
+            << nhist << std::endl;
+  return nhist;
 }
 
 
-int AnalysisThreadMiddle00::Analyze() {
-  // Read SIMDAQ
+QString AnalysisThreadParallel::ThreadNumber() {
+  if (thread_number_<10) {
+    return QString("0")+QString::number(thread_number_);
+  } else {
+    return QString::number(thread_number_);
+  }
+}
+
+
+int AnalysisThreadParallel::Analyze() {
+  // Read from initial thread
   double* ADC1;
   int* CH1;
   qint64* TS1;
   int nADC1, nCH1, nTS1;
 
-  QPair<int, double*> pADC1 = ReadData<double>("Initial","ADCOutput00");
+  QPair<int, double*> pADC1 = ReadData<double>("A","ADCOutput"+ThreadNumber());
   nADC1 = pADC1.first;
   ADC1 = pADC1.second;
-  QPair<int, int*> pCH1 = ReadData<int>("Initial","CHAN00");
+  QPair<int, int*> pCH1 = ReadData<int>("A","CHAN"+ThreadNumber());
   nCH1 = pCH1.first;
   CH1 = pCH1.second;
-  QPair<int, qint64*> pTS1 = ReadData<qint64>("Initial","TS00");
+  QPair<int, qint64*> pTS1 = ReadData<qint64>("A","TS"+ThreadNumber());
   nTS1 = pTS1.first;
   TS1 = pTS1.second;
 
-  // these should all be the same
-  QString histname = "Analysis Middle00";
+  QString histname = "Analysis Parallel " + ThreadNumber();
   if (GetHistogram(histname)) {
     UpdateHistogram(histname, ADC1, nADC1);
   } else {
-    std::cerr << "AnalysisThreadMiddle00::Analyze: Histogram not found" << std::endl;
+    std::cerr << "AnalysisThreadParallel::Analyze: Histogram not found" << std::endl;
   }
 
-  PostData<double>(nADC1, "ADCOutput00", ADC1);
-  PostData<int>(nCH1, "CHAN00", CH1);
-  PostData<qint64>(nTS1, "TS00", TS1);
+  PostData<double>(nADC1, "ADCOutput"+ThreadNumber(), ADC1);
+  PostData<int>(nCH1, "CHAN"+ThreadNumber(), CH1);
+  PostData<qint64>(nTS1, "TS"+ThreadNumber(), TS1);
 
   return 0;
 }

@@ -20,10 +20,10 @@
 // Dr. Daniel Chivers
 // dhchivers@lbl.gov
 
-#ifndef GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADMIDDLE00_H_
-#define GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADMIDDLE00_H_
+#ifndef GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADPARALLEL_H_
+#define GRIF_EXAMPLES_PARALLELTEST_ANALYSISTHREADPARALLEL_H_
 
-// AnalysisThreadMiddle00:
+// AnalysisThreadParallel:
 //    Passes along data that it reads and keeps a histogram.
 //
 //    Be sure to modify GRIUserProcesses.h and GRIUserLoader.cpp
@@ -34,13 +34,17 @@
 
 #include <core/GRIAnalysisThread.h>
 
-class AnalysisThreadMiddle00 : public GRIAnalysisThread {
+class AnalysisThreadParallel : public GRIAnalysisThread {
 
 public:
-  AnalysisThreadMiddle00() {}
-  ~AnalysisThreadMiddle00() {}
+  AnalysisThreadParallel() {}
+  ~AnalysisThreadParallel() {}
 
+  int Initialize(int thread_number);
   int Analyze();
+  QString ThreadNumber();
+
+  int thread_number_;
 };
 
-#endif  // GRIF_EXAMPLES_PARALLEL_ANALYSISTHREADMIDDLE00_H_
+#endif  // GRIF_EXAMPLES_PARALLEL_ANALYSISTHREADPARALLEL_H_

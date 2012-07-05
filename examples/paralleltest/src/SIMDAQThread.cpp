@@ -80,13 +80,15 @@ GRIDAQBaseAccumNode* SIMDAQThread::RegisterDataOutput(QString outName) {
 
 int SIMDAQThread::AcquireData(int n) {
   Q_UNUSED(n);
-  GRISleep::msleep(50);
+  GRISleep::msleep(200);
+
   QDateTime currentTime = QDateTime::currentDateTime();
   // 10ns ticks
   qint64 deltaT = prev_time_.time().msecsTo(currentTime.time())*1E5;
   // 10ns ticks
   qint64 t1 = start_time_.time().msecsTo(currentTime.time())*1E5;
   prev_time_ = currentTime;
+
   // First get the number of counts received
   int ncnt = 0;
   int *NB = new int[get_nchan()];
@@ -136,15 +138,22 @@ int SIMDAQThread::AcquireData(int n) {
     }
   }
 
-  PostData<double>(ncnt, "ADCOutput",ADC,ts);
-  PostData<int>(ncnt, "CHAN",Ch,ts);
-  PostData<qint64>(ncnt, "TS",ts,ts);
+  if (ncnt>0) {
+    std::cout << "SIMDAQ::PostData - ADCOutput: " << ncnt << std::endl;
+    PostData<double>(ncnt, "ADCOutput",ADC,ts);
+    std::cout << "SIMDAQ::PostData - CHAN: " << ncnt << std::endl;
+    PostData<int>(ncnt, "CHAN",Ch,ts);
+    std::cout << "SIMDAQ::PostData - TS: " << ncnt << std::endl;
+    PostData<qint64>(ncnt, "TS",ts,ts);
+  }
 
   delete [] NS;
   delete [] NB;
   delete [] ADC;
   delete [] ts;
   delete [] Ch;
+
+  GRISleep::msleep(50);
 
   return 0;
 }
