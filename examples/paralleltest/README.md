@@ -14,4 +14,4 @@ The number of threads is specified in the calls to the `make_xml*.py` scripts in
 
 ## Application Graph
 
-<center><img src="./app.svg" alt="Parallel Test GRIF Application" title="Parallel Test GRIF Application" /></center>
+<center>![GRIF Application Graph](./app.png "GRIF Application Graph")</center>

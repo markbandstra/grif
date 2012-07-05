@@ -59,9 +59,9 @@ QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1 -O3
 ## 
 # Please fill in GRIFDIR and ROOTDIR with the appropriate paths
 # Top directory of GRIF on your machine:
-GRIFDIR = /Users/markbandstra/Projects/GRIF/grif
+GRIFDIR =
 # Directory of ROOT on your machine:
-ROOTDIR = /Users/markbandstra/Software/root
+ROOTDIR =
 
 GRIFPROJECTDIR = $$GRIFDIR/examples/paralleltest
 UTILDIR = $$GRIFDIR/util

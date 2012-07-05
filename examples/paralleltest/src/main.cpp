@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
   for (int j=0; j < NUM_ANALYSIS_THREADS; j++) {
     histDraw_Scroll->AddHist(B[j]->GetHistogram("Analysis Parallel "+B[j]->ThreadNumber()));
   }
-  histDraw_Scroll->SetGridMajor(35,3);
+  histDraw_Scroll->SetGridMajor((NUM_ANALYSIS_THREADS+2)/3,3);
   histDraw_Scroll->SetGridMinor(3,3);
   histDraw_Scroll->SetGridMinorUpperLeft(0,0);
   histDraw_Scroll->SetXLabelAll("Channel");
