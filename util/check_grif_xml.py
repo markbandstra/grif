@@ -296,12 +296,12 @@ class AppXml(object):
             try:
                 assert(link.writer in self.thread_names)
             except:
-                print("Error: Link" + link + " refers to a writer object that is not specified: " + thread.name)
+                print("Error: Link " + str(link) + " refers to a writer object that is not specified: " + link.writer)
                 sys.exit(-1)
             try:
                 assert(link.reader in self.thread_names)
             except:
-                print("Error: Link" + link + " refers to a readerr object that is not specified: " + thread.name)
+                print("Error: Link " + str(link) + " refers to a reader object that is not specified: " + link.reader)
                 sys.exit(-1)                
         print("AppXml: Check passed!")
         return True

@@ -46,6 +46,8 @@ int AnalysisThreadSeries::Initialize(int n_channels, int thread_number) {
 
 QString AnalysisThreadSeries::ThreadNumber() {
   if (thread_number_<10) {
+    return QString("00")+QString::number(thread_number_);
+  } else if (thread_number_<100) {
     return QString("0")+QString::number(thread_number_);
   } else {
     return QString::number(thread_number_);
@@ -63,6 +65,8 @@ QString AnalysisThreadSeries::XmlNamePrevious() {
   if (thread_previous==-1) {
     return QString("SIMDAQ1");
   } else if (thread_previous<10) {
+    return QString("A")+QString("00")+QString::number(thread_previous);
+  } else if (thread_previous<100) {
     return QString("A")+QString("0")+QString::number(thread_previous);
   } else {
     return QString("A")+QString::number(thread_previous);

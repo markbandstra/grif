@@ -26,7 +26,7 @@ print("Writing app XML file: {0}".format(app_xml))
 xmlfile = file(format(app_xml), 'w')
 
 def thread_str(thread_num):
-    return str('%02d' % thread_num)
+    return str('%03d' % thread_num)
 
 print('<?xml version="1.0"?>', file=xmlfile)
 print('<app>', file=xmlfile)
@@ -38,7 +38,7 @@ print('  </Objects>', file=xmlfile)
 print('', file=xmlfile)
 print('  <Links>', file=xmlfile)
 for data in ['ADCOutput', 'CHAN', 'TS']:
-    print('    <link writer = \"SIMDAQ1\" reader = \"A00\" data = \"'+data+'\"></link>', file=xmlfile)
+    print('    <link writer = \"SIMDAQ1\" reader = \"A'+thread_str(0)+'\" data = \"'+data+'\"></link>', file=xmlfile)
 for thread_id in range(1,num_threads):
     for data in ['ADCOutput', 'CHAN', 'TS']:
         print('    <link writer = \"A'+thread_str(thread_id-1)+'\" reader = \"A'+thread_str(thread_id)+'\" data = \"'+data+'\"></link>', file=xmlfile)

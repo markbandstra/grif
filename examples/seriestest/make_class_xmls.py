@@ -34,7 +34,7 @@ except:
     sys.exit(-1)
 
 def thread_str(thread_num):
-    return str('%02d' % thread_num)
+    return str('%03d' % thread_num)
 
 for thread_num in range(num_threads):
     class_xml = format(os.path.join(classes_xml_dir, 'A'+thread_str(thread_num)+'.XML'))
