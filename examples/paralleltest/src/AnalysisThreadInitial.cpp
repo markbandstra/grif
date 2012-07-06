@@ -28,6 +28,8 @@
 
 QString AnalysisThreadInitial::ThreadNumber(int index) {
   if (index<10) {
+    return QString("00")+QString::number(index);
+  } else if (index<100) {
     return QString("0")+QString::number(index);
   } else {
     return QString::number(index);

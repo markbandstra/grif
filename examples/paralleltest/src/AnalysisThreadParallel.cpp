@@ -42,6 +42,8 @@ int AnalysisThreadParallel::Initialize(int thread_number) {
 
 QString AnalysisThreadParallel::ThreadNumber() {
   if (thread_number_<10) {
+    return QString("00")+QString::number(thread_number_);
+  } else if (thread_number_<100) {
     return QString("0")+QString::number(thread_number_);
   } else {
     return QString::number(thread_number_);

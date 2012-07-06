@@ -26,7 +26,7 @@ print("Writing app XML file: {0}".format(app_xml))
 xmlfile = file(format(app_xml), 'w')
 
 def thread_str(thread_num):
-    return str('%02d' % thread_num)
+    return str('%03d' % thread_num)
 
 print('<?xml version="1.0"?>', file=xmlfile)
 print('<app>', file=xmlfile)
