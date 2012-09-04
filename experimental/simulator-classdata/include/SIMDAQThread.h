@@ -31,7 +31,8 @@
 #include "core/accum/GRIDAQBaseAccumNode.h"
 #include "config/GRIDataDefines.h"
 #include "core/GRIDAQThread.h"
-#include "EventClass.h"
+#include "EventClassArray.h"
+#include "EventClassVector.h"
 
 class SIMDAQThread : public GRIDAQThread {
  public:

@@ -34,99 +34,68 @@ SIMAnalysisThread::~SIMAnalysisThread() {
 }
 
 int SIMAnalysisThread::Analyze() {
-  double* ADC;
-  double* ADC2;
-  int* Ch;
-  int* Ch2;
-  qint64* ts_;
-  qint64* ts2_;
-  int nADC;
-  int nADC2;
-
-  QPair<int, double*> pADC = ReadData<double>("SIMDAQ1","ADCOutput");
-  ADC = pADC.second; nADC = pADC.first;
-
-  QPair<int, int*> pCH = ReadData<int>("SIMDAQ1","CHAN");
-  Ch = pCH.second;
-
-  QPair<int, qint64*> pTS = ReadData<qint64>("SIMDAQ1","TS");
-  ts_ = pTS.second;
-
-  QPair<int, double*> pADC2 = ReadData<double>("SIMDAQ2","ADCOutput");
-  ADC2 = pADC2.second; nADC2 = pADC2.first;
-
-  QPair<int, int*> pCH2 = ReadData<int>("SIMDAQ2","CHAN");
-  Ch2 = pCH2.second;
-
-  QPair<int, qint64*> pTS2 = ReadData<qint64>("SIMDAQ2","TS");
-  ts2_ = pTS2.second;
-
-  std::cout << "SIMAnalysisThread::Analyze:  Now reading Events from SIMDAQ1" << std::endl;
-  EventClass* Event1;
+  std::cout << "SIMAnalysisThread::Analyze:  Now reading array Events from SIMDAQ" << std::endl;
+  EventClassArray* Event1;
   int nEvent1;
-  QPair<int, EventClass*> pEvent1 = ReadData<EventClass>("SIMDAQ1","Event");
+  QPair<int, EventClassArray*> pEvent1 = ReadData<EventClassArray>("SIMDAQ","EventClassArray");
   Event1 = pEvent1.second; nEvent1 = pEvent1.first;
-  std::cout << "SIMAnalysisThread::Analyze:  Finished reading Events from SIMDAQ1" << std::endl;
-  for (int i=0; i<nEvent1; i++) {
-    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-              << " has " << Event1[i].NEnergies() << " energies, "
-              << "  " << Event1[i].NChan() << " channels, "
-              << "and " << Event1[i].NTS() << " timestamps"
-              << std::endl;
-    if (Event1[i].NEnergies()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " energy=" << Event1[i].Energy(0) << std::endl;
-    if (Event1[i].NChan()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " chan=" << Event1[i].Chan(0) << std::endl;
-    if (Event1[i].NTS())
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " timestamp=" << Event1[i].TS(0) << std::endl;
-    std::cout << "SIMAnalysisThread::Analyze:  Event #" << i
-              << " has " << Event1[i].NEnergies() << " energies, "
-              << "  energy=" << Event1[i].Energy(0)
-              << "  (test=" << Event1[i].EnergyTest() << ")"
-//              << "  (test2=" << Event1[i].test_vector_[0] << ")"
-              << "  (test2=" << Event1[i].test_vector_.size() << ")"
-//              << "  (test2=" << Event1[i].test_vector_[0].toStdString().c_str() << ")"
-              << std::endl;
-  }
+  std::cout << "SIMAnalysisThread::Analyze:  Finished reading array Events from SIMDAQ" << std::endl;
 
-  std::cout << "SIMAnalysisThread::Analyze:  Now reading Events from SIMDAQ2" << std::endl;
-  EventClass* Event2;
+  std::cout << "SIMAnalysisThread::Analyze:  Now reading vector Events from SIMDAQ" << std::endl;
+  EventClassVector* Event2;
   int nEvent2;
-  QPair<int, EventClass*> pEvent2 = ReadData<EventClass>("SIMDAQ2","Event");
+  QPair<int, EventClassVector*> pEvent2 = ReadData<EventClassVector>("SIMDAQ","EventClassVector");
   Event2 = pEvent2.second; nEvent2 = pEvent2.first;
-  std::cout << "SIMAnalysisThread::Analyze:  Finished reading Events from SIMDAQ2" << std::endl;
-  for (int i=0; i<nEvent2; i++) {
-    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-              << " has " << Event2[i].NEnergies() << " energies, "
-              << "  " << Event2[i].NChan() << " channels, "
-              << "and " << Event2[i].NTS() << " timestamps"
+  std::cout << "SIMAnalysisThread::Analyze:  Finished reading vector Events from SIMDAQ" << std::endl;
+
+  Q_ASSERT(nEvent1 == nEvent2);
+  std::cout << "SIMDAQThread::AcquireData:  Comparing array to vector events" << std::endl;
+  for (int i=0; i<nEvent1; i++) {
+    std::cout << std::endl;
+    std::cout << "  Event # " << i << std::endl;
+    std::cout << QString("Data").rightJustified(11).toStdString()
+              << QString("Array").rightJustified(11).toStdString()
+              << QString("Vector").rightJustified(11).toStdString()
+              << QString("Array[0]").rightJustified(11).toStdString()
+              << QString("Vector[0]").rightJustified(11).toStdString()
               << std::endl;
-    if (Event2[i].NEnergies()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " energy=" << Event2[i].Energy(0) << std::endl;
-    if (Event2[i].NChan()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " chan=" << Event2[i].Chan(0) << std::endl;
-    if (Event2[i].NTS())
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " timestamp=" << Event2[i].TS(0) << std::endl;
-    std::cout << "SIMAnalysisThread::Analyze:  Event #" << i
-              << " has " << Event2[i].NEnergies() << " energies, "
-              << "  energy=" << Event2[i].Energy(0)
-              << "  (test=" << Event2[i].EnergyTest() << ")"
-//              << "  (test2=" << Event2[i].test_vector_[0] << ")"
-              << "  (test2=" << Event2[i].test_vector_.size() << ")"
-//              << "  (test2=" << Event2[i].test_vector_[0].toStdString().c_str() << ")"
-              << std::endl;
+    std::cout << QString("").rightJustified(55,'-').toStdString() << std::endl;
+    std::cout << QString("Energy").rightJustified(11).toStdString()
+              << QString::number(Event1[i].energy_size()).rightJustified(11).toStdString()
+              << QString::number(Event2[i].energy_size()).rightJustified(11).toStdString()
+              << QString::number(Event1[i].energy(0)).rightJustified(11).toStdString();
+    if (Event2[i].energy_size()==1) {
+      std::cout << QString::number(Event2[i].energy(0)).rightJustified(11).toStdString();
+    } else {
+      std::cout << QString("corrupted").rightJustified(11).toStdString();
+    }
+    std::cout << std::endl;
+    std::cout << QString("Chan").rightJustified(11).toStdString()
+              << QString::number(Event1[i].chan_size()).rightJustified(11).toStdString()
+              << QString::number(Event2[i].chan_size()).rightJustified(11).toStdString()
+              << QString::number(Event1[i].chan(0)).rightJustified(11).toStdString();
+    if (Event2[i].chan_size()==1) {
+      std::cout << QString::number(Event2[i].chan(0)).rightJustified(11).toStdString();
+    } else {
+      std::cout << QString("corrupted").rightJustified(11).toStdString();
+    }
+    std::cout << std::endl;
+    std::cout << QString("TS").rightJustified(11).toStdString()
+              << QString::number(Event1[i].ts_size()).rightJustified(11).toStdString()
+              << QString::number(Event2[i].ts_size()).rightJustified(11).toStdString()
+              << QString::number(Event1[i].ts(0)).rightJustified(11).toStdString();
+    if (Event2[i].ts_size()==1) {
+      std::cout << QString::number(Event2[i].ts(0)).rightJustified(11).toStdString();
+    } else {
+      std::cout << QString("corrupted").rightJustified(11).toStdString();
+    }
+    std::cout << std::endl;
   }
 
   ++nread_;
 
-  UpdateHistogram("ADCHist",ADC,nADC);
-  UpdateHistogram("ADCHist",ADC2,nADC2);
+//  UpdateHistogram("ADCHist",ADC,nADC);
+//  UpdateHistogram("ADCHist",ADC2,nADC2);
 
   return 0;
 }

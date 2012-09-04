@@ -25,7 +25,8 @@
 
 #include "core/GRIAnalysisThread.h"
 #include "QFile"
-#include "EventClass.h"
+#include "EventClassArray.h"
+#include "EventClassVector.h"
 
 class SIMAnalysisThread : public GRIAnalysisThread {
  public:

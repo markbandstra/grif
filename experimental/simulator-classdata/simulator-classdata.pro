@@ -45,13 +45,15 @@ include(../../framework/include/finclude.pri)
 HEADERS += \
     ./include/SIMAnalysisThread.h \
     ./include/SIMDAQThread.h \
-    ./include/EventClass.h
+    ./include/EventClassArray.h \
+    ./include/EventClassVector.h
 
 SOURCES += \
     ./src/main.cpp \
     ./src/SIMAnalysisThread.cpp \
     ./src/SIMDAQThread.cpp \
-    ./src/EventClass.cpp
+    ./src/EventClassArray.cpp \
+    ./src/EventClassVector.cpp
 
 QMAKE_CXXFLAGS += -D GRIF_CODE_GENERATION=1 -O3
 
@@ -79,6 +81,9 @@ win32 {
 DEFINES += GRIF_LOG_DIR=\\\"$${GRIF_LOG_DIR}\\\"
 
 DEFINES += GRIFPROJECTDIR=$${GRIFPROJECTDIR}
+
+# draw app graph
+system(cd $$UTILDIR && python draw_app_graph.py $$GRIFPROJECTDIR svg png)
 
 # External libraries
 INCLUDEPATH += $$GRIFDIR/external

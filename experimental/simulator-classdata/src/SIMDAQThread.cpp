@@ -68,15 +68,11 @@ int SIMDAQThread::removePeak(int index) {
 
 GRIDAQBaseAccumNode* SIMDAQThread::RegisterDataOutput(QString outName) {
   GRIDAQBaseAccumNode* p = NULL;
-  if (outName == "ADCOutput") {
-    p = new GRIDAQAccumulator<double>(outName,1e8,5,250);
-  } else if (outName == "CHAN") {
-    p = new GRIDAQAccumulator<int>(outName,1e8,5,250);
-  } else if (outName == "TS") {
-    p = new GRIDAQAccumulator<qint64>(outName,1e8,5,250);
-  } else if (outName == "Event") {
-  p = new GRIDAQAccumulator<EventClass>(outName,1e8,5,250);
-}
+  if (outName == "EventClassArray") {
+    p = new GRIDAQAccumulator<EventClassArray>(outName,1e8,5,250);
+  } else if (outName == "EventClassVector") {
+    p = new GRIDAQAccumulator<EventClassVector>(outName,1e8,5,250);
+  }
   return p;
 }
 
@@ -137,37 +133,39 @@ int SIMDAQThread::AcquireData(int n) {
       ts[m] = qint64(rnd*(double)deltaT + (double)(t1));
     }
   }
-  PostData<double>(ncnt, "ADCOutput",ADC,ts);
-  PostData<int>(ncnt, "CHAN",Ch,ts);
-  PostData<qint64>(ncnt, "TS",ts,ts);
 
-  EventClass *Events = new EventClass[ncnt];
+  EventClassArray *Events1 = new EventClassArray[ncnt];
+  EventClassVector *Events2 = new EventClassVector[ncnt];
   for (int i=0; i<ncnt; i++) {
-    Events[i].AddEnergy(ADC[i]);
-    Events[i].AddChan(Ch[i]);
-    Events[i].AddTS(ts[i]);
-    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-              << " has " << Events[i].NEnergies() << " energies, "
-              << Events[i].NChan() << " channels, "
-              << "and " << Events[i].NTS() << " timestamps"
-              << std::endl;
-    if (Events[i].NEnergies()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " energy=" << Events[i].Energy(0) << std::endl;
-    if (Events[i].NChan()>0)
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " chan=" << Events[i].Chan(0) << std::endl;
-    if (Events[i].NTS())
-      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-                << " timestamp=" << Events[i].TS(0) << std::endl;
-    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
-              << " has " << Events[i].NEnergies() << " energies, "
-              << "  energy=" << Events[i].Energy(0)
-              << "  (test=" << Events[i].EnergyTest() << ")"
-              << std::endl;
+    Events1[i].energy_append(ADC[i]);
+    Events1[i].chan_append(Ch[i]);
+    Events1[i].ts_append(ts[i]);
+    Events2[i].energy_append(ADC[i]);
+    Events2[i].chan_append(Ch[i]);
+    Events2[i].ts_append(ts[i]);
+//    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
+//              << " has " << Events1[i].energy_size() << " energies, "
+//              << Events1[i].chan_size() << " channels, "
+//              << "and " << Events1[i].ts_size() << " timestamps"
+//              << std::endl;
+//    if (Events1[i].energy_size() > 0)
+//      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
+//                << " energy=" << Events1[i].energy(0) << std::endl;
+//    if (Events1[i].chan_size() > 0)
+//      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
+//                << " chan=" << Events1[i].chan(0) << std::endl;
+//    if (Events1[i].ts_size() > 0)
+//      std::cout << "SIMDAQThread::AcquireData:  Event #" << i
+//                << " timestamp=" << Events1[i].ts(0) << std::endl;
+//    std::cout << "SIMDAQThread::AcquireData:  Event #" << i
+//              << " has " << Events1[i].energy_size() << " energies, "
+//              << "  energy=" << Events1[i].energy(0)
+//              << std::endl;
   }
-  PostData<EventClass>(ncnt,"Event",Events,ts);
-  delete [] Events;
+  PostData<EventClassArray>(ncnt,"EventClassArray",Events1,ts);
+  PostData<EventClassVector>(ncnt,"EventClassVector",Events2,ts);
+  delete [] Events1;
+  delete [] Events2;
 
   delete [] NS;
   delete [] NB;
